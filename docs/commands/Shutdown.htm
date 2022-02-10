@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>Shutdown - 语法 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="The Shutdown function shuts down, restarts, or logs off the system." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>Shutdown</h1>
+
+<p>关机, 重启或注销系统.</p>
+
+<pre class="Syntax"><span class="func">Shutdown</span> Code</pre>
+<h2 id="Parameters">参数</h2>
+<dl>
+
+  <dt>Code</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#numbers">整数</a></p>
+    <p>下面列出了关闭代码的组合.</p>
+  </dd>
+
+</dl>
+
+<h2 id="Remarks">备注</h2>
+<p>关闭代码是下列值的组合:</p>
+<table class="info" style="width:80%">
+  <tr>
+    <td style="width:25%">注销</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>关机</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>重启</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>强制</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>断电</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>挂起/休眠</td>
+    <td>请参阅本页底部的 <a href="#ExSuspend">DllCall 示例</a>.</td>
+  </tr>
+  <tr>
+    <td>关闭显示器</td>
+    <td>请参阅 <a href="SendMessage.htm#ExMonitorPower">SendMessage 的示例 #1</a>.</td>
+  </tr>
+</table>
+<p>把需要的值加在一起. 例如, 要关闭并切断电源的代码为 <strong>9</strong>(关机 + 断电 = 1 + 8 = 9).</p>
+<p>&quot;强制&quot; 值(4) 强制关闭所有打开的应用程序. 它应该仅在紧急情况下使用, 因为这样可能导致任何打开的应用程序丢失数据.</p>
+<p>&quot;断电&quot; 值关闭系统并切断电源.</p>
+<p>相关说明, 脚本通过 <a href="OnExit.htm">OnExit</a> 可以检测到系统正在关闭或用户正在注销.</p>
+<h2 id="Related">相关</h2>
+<p><a href="Run.htm">Run</a>, <a href="ExitApp.htm">ExitApp</a>, <a href="OnExit.htm">OnExit</a></p>
+<h2 id="Examples">示例</h2>
+<div class="ex" id="ExBasic">
+<p><a href="#ExBasic">#1</a>: 强制重新启动(重启 + 强制 = 2 + 4 = 6):</p>
+<pre>Shutdown 6</pre>
+</div>
+
+<div class="ex" id="ExSuspend">
+<p><a href="#ExSuspend">#2</a>: 调用 Windows API 函数 &quot;SetSuspendState&quot; 来让系统挂起或休眠.</p>
+<pre><em>; 参数 #1: 使用 1 代替 0 来进行休眠而不是挂起.
+; 参数 #2: 使用 1 代替 0 来立即挂起而不询问每个应用程序以获得许可.
+; 参数 #3: 使用 1 而不是 0 来禁止所有的唤醒事件.</em>
+DllCall(&quot;PowrProf\SetSuspendState&quot;, &quot;Int&quot;, 0, &quot;Int&quot;, 0, &quot;Int&quot;, 0)</pre>
+</div>
+
+</body>
+</html>

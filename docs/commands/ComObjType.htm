@@ -1,0 +1,137 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>ComObjType - 语法 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="The ComObjType function retrieves type information from a COM object." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>ComObjType</h1>
+
+<p>从 COM 对象检索类型信息.</p>
+
+<pre class="Syntax">VarType := <span class="func">ComObjType</span>(ComObject)
+IName   := <span class="func">ComObjType</span>(ComObject, "Name")
+IID     := <span class="func">ComObjType</span>(ComObject, "IID")
+CName   := <span class="func">ComObjType</span>(ComObject, "Class")
+CLSID   := <span class="func">ComObjType</span>(ComObject, "CLSID")
+</pre>
+
+<h2 id="Parameters">参数</h2>
+<dl>
+
+  <dt>ComObject</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#objects">对象</a></p>
+    <p>包含 COM 对象或类型化值的包装器对象.</p>
+  </dd>
+
+  <dt>Param2</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#strings">字符串</a></p>
+    <p>第二个参数是指示返回的类型信息的字符串.</p>
+  </dd>
+
+</dl>
+
+<h2 id="Return_Value">返回值</h2>
+<p>返回值取决于 <em>Param2</em> 的值:</p>
+<table class="info">
+  <tr>
+    <th>Param2</th>
+    <th style="white-space: nowrap">返回类型</th>
+    <th>返回值</th>
+  </tr>
+  <tr>
+    <td>省略</td>
+    <td><a href="../Concepts.htm#numbers">整数</a></td>
+    <td><a href="#vt">变体类型码</a>表示 COM 包装器对象包含的值的类型.</td>
+  </tr>
+  <tr>
+    <td><code>"Name"</code></td>
+    <td><a href="../Concepts.htm#strings">字符串</a></td>
+    <td>对象默认接口的名称.</td>
+  </tr>
+  <tr>
+    <td><code>"IID"</code></td>
+    <td><a href="../Concepts.htm#strings">字符串</a></td>
+    <td>对象默认接口的全局唯一标识符(GUID).</td>
+  </tr>
+  <tr>
+    <td><code>"Class"</code></td>
+    <td><a href="../Concepts.htm#strings">字符串</a></td>
+    <td>对象的类名. 注意, 这不同于 Prog ID(Prog ID 是用于在系统注册表或 ComObjCreate 中标识类的名称).</td>
+  </tr>
+  <tr>
+    <td><code>"CLSID"</code></td>
+    <td><a href="../Concepts.htm#strings">字符串</a></td>
+    <td>对象的类的全局唯一标示符(GUID). 类通常由 CLSID 在 <code>HKCR\CLSID</code> 注册表项下注册.</td>
+  </tr>
+</table>
+<p>如果参数无效或无法检索请求的类型信息, 则返回空字符串.</p>
+
+<h2 id="vt">Variant(变体) 类型常量</h2>
+<pre>
+VT_EMPTY     :=      0  <em>; 未指定值</em>
+VT_NULL      :=      1  <em>; 类似 SQL 中的空值</em>
+VT_I2        :=      2  <em>; 16 位有符号整数</em>
+VT_I4        :=      3  <em>; 32 位有符号整数</em>
+VT_R4        :=      4  <em>; 32 位浮点数</em>
+VT_R8        :=      5  <em>; 64 位浮点数</em>
+VT_CY        :=      6  <em>; 货币</em>
+VT_DATE      :=      7  <em>; 日期</em>
+VT_BSTR      :=      8  <em>; COM 字符串(带长度前缀的 Unicode 字符串)</em>
+VT_DISPATCH  :=      9  <em>; COM 对象</em>
+VT_ERROR     :=    0xA  <em>; 错误码(32 位整数)</em>
+VT_BOOL      :=    0xB  <em>; 布尔值: 真(-1) 或 假(0)</em>
+VT_VARIANT   :=    0xC  <em>; <a href="http://msdn.microsoft.com/en-us/library/ms221627.aspx">VARIANT</a>(必须与 VT_ARRAY 或 VT_BYREF 组合使用)</em>
+VT_UNKNOWN   :=    0xD  <em>; IUnknown 接口指针</em>
+VT_DECIMAL   :=    0xE  <em>; 小数(不支持)</em>
+VT_I1        :=   0x10  <em>; 8 位有符号整数</em>
+VT_UI1       :=   0x11  <em>; 8 位无符号整数</em>
+VT_UI2       :=   0x12  <em>; 16 位无符号整数</em>
+VT_UI4       :=   0x13  <em>; 32 位无符号整数</em>
+VT_I8        :=   0x14  <em>; 64 位有符号整数</em>
+VT_UI8       :=   0x15  <em>; 64 位无符号整数</em>
+VT_INT       :=   0x16  <em>; 有符号机器整数</em>
+VT_UINT      :=   0x17  <em>; 无符号机器整数</em>
+VT_RECORD    :=   0x24  <em>; 用户定义的类型 -- 不支持</em>
+VT_ARRAY     := 0x2000  <em>; <a href="http://msdn.microsoft.com/en-us/library/ms221482.aspx">SAFEARRAY</a></em>
+VT_BYREF     := 0x4000  <em>; 指向另一种类型值的指针</em>
+<em>/*
+ VT_ARRAY 和 VT_BYREF 与另一个值组合使用(使用按位或)
+ 以表示最终的类型. 例如, 0x2003 表示 32 位有符号整数的 <a href="http://msdn.microsoft.com/en-us/library/ms221482.aspx">SAFEARRAY</a>, 而 0x400C 表示指向 <a href="http://msdn.microsoft.com/en-us/library/ms221627.aspx">VARIANT</a> 的指针.
+*/</em>
+</pre>
+
+<h2 id="Remarks">备注</h2>
+<p>在大多数情况下, 来自 COM 对象的方法或属性的返回值会被转换为 AutoHotkey 支持的适当数据类型. 没有特别处理的类型通过 <a href="http://msdn.microsoft.com/en-us/library/ms221258.aspx">VariantChangeType</a> 强制转换为字符串; 如果失败或者如果变量类型包含 VT_ARRAY 或 VT_BYREF 标志, 则返回一个同时包含值和类型的对象.</p>
+<p>对于任意变量 <i>x</i>, 如果 <code>ComObjType(x)</code> 返回一个整数, 则 <i>x</i> 包含一个 COM 对象包装器.</p>
+<p>如果 <em>Param2</em> 是 <code>"Name"</code> 或 <code>"IID"</code>, 则通过 <a href="https://msdn.microsoft.com/en-us/library/ms221571.aspx">IDispatch::GetTypeInfo</a> 接口方法检索类型信息. <em>ComObject</em> 的变体类型必须是 VT_DISPATCH.</p>
+<p>如果 <em>Param2</em> 是 <code>"Class"</code> 或 <code>"CLSID"</code>, 则通过 <a href="https://msdn.microsoft.com/en-us/library/ms690192.aspx">IProvideClassInfo::GetClassInfo</a> 接口方法检索类型信息. <em>ComObject</em> 的变体类型必须是 VT_DISPATCH 或 VT_UNKNOWN, 该对象必须实现 IProvideClassInfo 接口(有些对象没有实现).</p>
+
+<h2 id="Related">相关</h2>
+<p><a href="ComObjValue.htm">ComObjValue</a>, <a href="ComObject.htm">ComObject</a>, <a href="ComObjCreate.htm">ComObjCreate</a>, <a href="ComObjGet.htm">ComObjGet</a>, <a href="ComObjActive.htm">ComObjActive</a></p>
+
+<h2 id="Examples">示例</h2>
+<div class="ex" id="ExBasic">
+<p><a href="#ExBasic">#1</a></p>
+<pre>
+d := <a href="ComObjCreate.htm">ComObjCreate</a>("Scripting.Dictionary")
+MsgBox
+(
+    "Variant type:`t" ComObjType(d) "
+    Interface name:`t" ComObjType(d, "Name") "
+    Interface ID:`t" ComObjType(d, "IID") "
+    Class name:`t" ComObjType(d, "Class") "
+    Class ID (CLSID):`t" ComObjType(d, "CLSID")
+)</pre>
+</div>
+
+</body>
+</html>

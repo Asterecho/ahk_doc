@@ -1,0 +1,730 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="tidbit" />
+<meta name="description" content="Learn how to download and install AutoHotkey, to create a script, to use hotkeys and hotstrings, to send keystrokes, to run programs, etc." />
+<meta name="keywords" content="ahk, autohotkey, tutorial, beginners guide" />
+<title>初学者向导 | AutoHotkey v2</title>
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>AutoHotkey 初学者向导 <span style="opacity: 0.4">作者 tidbit</span></h1>
+<h2 id="s0">目录</h2>
+<ol>
+    <li><a href="#s1">基础</a>
+    <ol type="a">
+        <li><a href="#s11">下载和安装 AutoHotkey</a></li>
+        <li><a href="#s12">如何创建一个脚本</a></li>
+        <li><a href="#s13">你不能合并命令</a></li>
+        <li><a href="#s14">如何在你的电脑上找到帮助文件</a></li>
+    </ol>
+    </li>
+    <li><a href="#s2">热键 &amp; 热字串</a>
+    <ol type="a">
+        <li><a href="#s21">按键和其神秘符号</a></li>
+        <li><a href="#s22">窗口特定的热键/热字符串</a></li>
+        <li><a href="#s23">一个脚本里使用多个热键/热字串</a></li>
+        <li><a href="#s24">示例</a></li>
+    </ol>
+    </li>
+    <li><a href="#s3">发送按键</a>
+    <ol type="a">
+        <li><a href="#s31">Games</a></li>
+    </ol>
+    </li>
+    <li><a href="#s4">打开程序 &amp; 网站</a></li>
+    <li><a href="#s5">命令 vs. 函数</a>
+    <ol type="a">
+        <li><a href="#s51">代码块</a></li>
+    </ol>
+    </li>
+    <li><a href="#s6">变量</a>
+    <ol type="a">
+        <li><a href="#s61">什么时候使用百分号</a></li>
+        <li><a href="#s62">获取用户输入</a></li>
+        <li><a href="#s63">其它示例?</a></li>
+    </ol>
+    </li>
+    <li><a href="#s7">对象</a>
+    <ol type="a">
+        <li><a href="#s71">创建对象</a></li>
+        <li><a href="#s72">使用对象</a></li>
+    </ol>
+    </li>
+    <li><a href="#s8">其它有用的东西</a>
+    <ol type="a">
+        <li><a href="#s81">神秘的方括号 [ ]</a></li>
+        <li><a href="#s82">查找你的 AHK 版本</a></li>
+        <li><a href="#s83">尝试与错误</a></li>
+        <li><a href="#s84">缩进</a></li>
+        <li><a href="#s85">寻求帮助</a></li>
+        <li><a href="#s86">其他链接</a></li>
+    </ol>
+    </li>
+</ol>
+
+<h2 id="s1">1 - 基础</h2>
+<p class="note">在开始我们的旅程之前, 让我给你一些建议吧. 在本向导中, 你会看到大量的文字和代码. 为了更有效的学习, 建议你阅读这些文字并 <b>尝试</b> 这些代码. 然后, 再深入学习这些代码. 你可以复制并粘贴此页上的大多数示例. 如果你弄糊涂了, 试着再看一遍.</p>
+
+<h3 id="s11">a. 下载并安装 AutoHotkey</h3>
+<p id="local_note" class="note" style="display: none">如果你是在本地查看此文档, 你可能已经安装了 AutoHotkey 并且可以跳转到 b 部分.</p>
+<script type="text/javascript">
+  if ('file:mk:ms-its:'.indexOf(location.protocol) != -1)
+    document.getElementById("local_note").removeAttribute("style");
+</script>
+<p>在学习使用 AutoHotkey(AHK) 之前, 你需要下载它. 下载后, 你可能会需要安装它. 但这取决于你下载的版本. 对于本指南, 我们将使用安装版, 因为对于新手来说, 它最容易设置.</p>
+<p class="warning">目前还没有 AutoHotkey v2 的安装程序. 让它工作的最简单的方法是<a href="https://www.autohotkey.com/v2/">下载二进制文件</a>, 按照下面的安装步骤, 并用下载解压的安装文件夹中的二进制文件替换 AutoHotkey.exe.</p>
+
+<h4>文字指导:</h4>
+<ol>
+    <li>访问 AutoHotkey 主页: <a href="https://www.autohotkey.com/">https://www.autohotkey.com/</a></li>
+    <li>点击下载: <a href="https://www.autohotkey.com/download/ahk-install.exe">https://www.autohotkey.com/download/ahk-install.exe</a></li>
+    <li>在安装 Autohotkey 过程中, 需要你选择安装 UNICODE 或者 ANSI 版本. 你很可能需要 UNICODE 版本, 简单点说, 如果你想要它支持非英文字符和数字, 那就选择 UNICODE 版. 版本选择之后, 一直点下一步直到你看到安装(Install) 按钮.</li>
+    <li>装完了? 棒极了! 我们接着往下看.</li>
+</ol>
+<p class="note">视频指导, 请在 YouTube(可能您无法打开) 网站观看
+<a href="https://youtu.be/HcgQlGeaPHw">Install and Hello World</a> on YouTube.</p>
+
+<h3 id="s12">b. 如何创建一个脚本</h3>
+<p>Autohotkey 安装完成后, 你也许会想它能做些什么. AutoHotkey 不是魔法, 虽然我们都希望它是, 但它的确不是. 所以需要我们告诉它要去干什么. 而这个过程叫做 "写脚本".</p>
+
+<h4>文字指导:</h4>
+<ol>
+    <li>右键点桌面空白处.</li>
+    <li>点击"新建"菜单.</li>
+    <li>点击里面的 "AutoHotkey Script" 新建一个脚本.</li>
+    <li>给脚本命名. 它必须带 .ahk 后缀. 例如: MyScript.ahk</li>
+    <li>找到刚刚新建的脚本并右键点击它.</li>
+    <li>点击 "Edit Script".</li>
+    <li>一个新窗口被弹出, 也许是记事本. 如果是这样就成功了!
+    <p>现在你已经创建了一个脚本, 我们需要加点内容到脚本中. 有关所有内置函数和变量的列表, 请参阅<a href="#s5">第 5 节</a>.</p>
+    <p>这是一个使用 <a href="commands/Send.htm">Send</a> 函数创建的一个包含热键的简单脚本, 当你按下热键后, 它会向窗口发送一段文字:</p>
+    <pre>
+^j::
+{
+    Send "My First Script"
+}</pre>
+    <p>稍后我们将进行更深入的研究. 在此之前, 我们先解释一下上面的代码:</p>
+    <ul>
+        <li><code>^j::</code> 是热键. <code>^</code> 代表 <kbd>Ctrl</kbd>, <code>j</code> 是字母 <kbd>J</kbd>. 任何在 <code>::</code> <b>左边</b> 的字符表示您需要按下的热键.</li>
+        <li><code>Send "My First Script"</code> 表示如何 <strong>send(发送)</strong> 按键. <code>Send</code> 是函数, 任何在空格之后括在引号内的内容都将被键入.</li>
+        <li><code>{</code> 和 <code>}</code> 标志着<a href="Hotkeys.htm">热键</a>的开始和结束.</li>
+    </ul>
+    </li>
+    <li>保存文件.</li>
+    <li>双击桌面上的文件来运行它, 打开记事本或者其它可以输入文字的地方然后按下 <kbd>Ctrl</kbd> 和 <kbd>J</kbd>.</li>
+    <li>太好了! 你的第一个脚本完成了. 给自己一些奖励, 然后返回阅读本教程的其余部分.</li>
+</ol><p class="note">视频指导, 请在 YouTube 网站观看 <a href="https://youtu.be/HcgQlGeaPHw">Install and Hello World</a>.</p>
+<h3 id="s13">c. 不要合并命令</h3>
+<p>当你在写代码的时候, 你可能有强烈的冲动想在同一行放下几个命令, 或者在一个命令中嵌套多个命令, 千万不要这样做. 在<a href="#s5">第 5 节</a>我们将会告诉你为什么不要这么做, 同时, 我们还将告诉你应该怎么做.</p>
+
+<h3 id="s14">d. 如何在你的电脑上找到帮助文件</h3>
+<p>下载 v2.0-a076 或更高版本, 其中包括离线帮助文件. 目前没有 v2 的安装程序, 所以帮助文件您可以放置它在任何地方.</p>
+<p>寻找 <b>AutoHotkey.chm</b> 或一个名为 AutoHotkey 的文件, 上面有一个黄色问号.</p><!-- <p>有几种方法可以做到这一点, 假设您已经将 AutoHotkey 安装到默认位置:</p>
+<p>方案 1:</p>
+<ol>
+    <li>找到开始菜单或屏幕上的开始按钮, 通常在左下角.</li>
+    <li>点击<b>程序</b>或者<b>所有程序</b>.</li>
+    <li>在列表中查找 <b>AutoHotkey</b>.</li>
+    <li>你会看到 <b>AutoHotkey Help File</b>. 点击它.</li>
+    <li>完成!</li>
+</ol>
+<p>方案 2:</p>
+<ol>
+    <li>去你的桌面.</li>
+    <li>找到<b>我的电脑</b>或者<b>计算机</b>. 然后打开它.</li>
+    <li>进入安装 <b>AutoHotkey</b> 的硬盘. 可能是 <b>C:\</b> 盘.</li>
+    <li>在 <b>Program Files</b> 文件夹里找到 <b>AutoHotkey</b>.</li>
+    <li>查找 <b>AutoHotkey.chm</b> 或者找一个名叫 Autohotkey 并带有黄色问号图标的文件.</li>
+    <li>完成!</li>
+</ol> -->
+<h2 id="s2">2 - 热键 &amp; 热字串</h2>
+
+<p>什么是热键? 热键是一个发热的按键, 开个玩笑. 热键是用来触发某些动作的按键或组合按键. 例如:</p>
+<pre>^j::Send "My First Script"</pre>
+<p>什么是热字串? 当你键入它们时, 热字串主要用于扩展缩写(自动替换). 当然, 它也可以用来启动任何脚本动作. 例如:</p>
+<pre>::ftw::Free the whales</pre>
+<p>这两个例子的区别在于, 当你按下 <kbd>Ctrl</kbd>+<kbd>J</kbd> 时, 热键将会触发, 而热字串会将你输入的"ftw"转换为"Free the whales".</p>
+<p><i>"那么, 该如何创建一个热键?"</i> 好问题. 热键是通过一对冒号(::) 创建的. 按键名或组合按键名必须在 <code>::</code> 的<b>左边</b>. 代码则跟在后面, 以 <code>Return</code> 结束.</p>
+<p class="note"><strong>注意:</strong> 当然也有例外情况, 但很多时候容易引起混乱, 所以在向导页中不会涉及到它, 至少不是现在.</p>
+<pre>Esc::MsgBox "Escape!!!!"</pre>
+<p>热字串在要触发的文本两边各有一对冒号(::). 替换后的文本在第二对冒号(::) 的<b>右边</b>.</p>
+<p>如上所述, 热字串也可以启动脚本动作. 和热键一样 <i>"几乎能做任何事情"</i>.</p>
+<pre>::btw::
+{
+    MsgBox "You typed btw."
+}</pre>
+<p>有一个好消息是: 你可以为每一个热键, 热字串, 标签以及许多我们尚未讨论的其他内容编写多行代码.</p>
+<pre>^j::
+{
+    MsgBox "Wow!"
+    MsgBox "There are"
+    Run "notepad.exe"
+    WinActivate "Untitled - Notepad"  <em>; 无标题 - 记事本</em>
+    WinWaitActive "Untitled - Notepad"
+    Send "7 lines{!}{Enter}"
+    SendInput "inside the CTRL{+}J hotkey."
+}</pre>
+
+<h3 id="s21">a. 键和其神秘符号</h3>
+<p>你可能会问<i>"我怎么知道 ^ 代表 <kbd>Ctrl</kbd>?!"</i>. 好问题! 为了帮助你学习 ^ 和其它符号的意思, 注意看这个表:</p>
+<table class="info">
+    <tr>
+        <th>符号</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td><strong>#</strong></td>
+        <td><kbd>Win</kbd>(Windows 徽标键)</td>
+    </tr>
+    <tr>
+        <td><strong>!</strong></td>
+        <td><kbd>Alt</kbd></td>
+    </tr>
+    <tr>
+        <td><strong>^</strong></td>
+        <td><kbd>Control</kbd></td>
+    </tr>
+    <tr>
+        <td><strong>+</strong></td>
+        <td><kbd>Shift</kbd></td>
+    </tr>
+    <tr>
+        <td><strong>&amp;</strong></td>
+        <td>用于连接两个按键(含鼠标按键) 合并成一个自定义热键.</td>
+    </tr>
+</table>
+<p><strong>(有关完整的符号列表, 请参阅<a href="Hotkeys.htm">热键</a>页面)</strong></p>
+<p>此外, 对于所有/大多数能用于热键双冒号<b>左边</b>的热键名称, 请参阅<a href="KeyList.htm">按键列表</a>.</p>
+<p>你可以通过在两个按键(除手柄键) 之间, 使用 <code>&nbsp;&amp;&nbsp;</code> 来定义一个组合热键. 在下面的例子中, 你要按下<kbd>Numpad0</kbd>, 再按下<kbd>Numpad1</kbd> 或 <kbd>Numpad2</kbd>, 才能触发热键:</p>
+
+<pre>Numpad0 &amp; Numpad1::MsgBox "You pressed Numpad1 while holding down Numpad0."
+Numpad0 &amp; Numpad2::Run "notepad.exe"
+</pre>
+
+<p>如果你想知道热字串是否和热键一样有很酷的修饰符, 答案是有!热字串的修饰符在第一对冒号(::) 之间, 例如. 例如:</p>
+<pre>:*:ftw::Free the whales</pre>
+
+<p class="note">想要查看更多关于热键和热字串修饰符的信息和实例, 请参阅: <a href="Hotkeys.htm">热键</a>和<a href="Hotstrings.htm">热字串</a>.</p>
+<h3 id="s22">b. 窗口特定的热键/热字串</h3>
+
+<p>有时候你也许想要热键或热字串只在某些特定窗口上工作(或禁用). 要做到这一点, 您需要使用其中的任意一个"高级"命令, 在它们前面带有一个 #:</p>
+<pre>#IfWinActive
+#IfWinExist</pre>
+<p>这些特殊的命令(技术上称为"指令") 可以创建对上下文敏感的热键和热字串. 只需指定一个窗口标题. 但在某些情况下, 您可能希望指定某个标准(如 HWND, 组或类). 这些都比较高级, 在这里有更深入的介绍: <a href="misc/WinTitle.htm">The WinTitle Parameter &amp; the Last Found Window</a>.</p>
+<pre>#If WinActive("Untitled - Notepad")
+#Space::MsgBox "You pressed WIN+SPACE in Notepad."</pre>
+<p>要关闭后续热键或热字串的上下文敏感性, 请指定任意 #IfWin 指令, 但将其所有参数留空. 例如:</p><pre><em>; 无标题 - 记事本</em>
+#If WinActive("Untitled - Notepad")
+!q::MsgBox "You pressed ALT+Q in Notepad."
+
+<em>; 任何标题不是无标题 - 记事本的窗口</em>
+#If
+!q::MsgBox "You pressed ALT+Q in any window."
+</pre>
+<p>当 #ifwin 指令在脚本中从未使用, 所有的热键和热字串对所有窗口生效.</p>
+<p>#IfWin 指令是与位置相关的: 它们将影响脚本中的位于他们之间所有热键和热字串. 它们也相互排斥的; 也就是说, 只有最近的一个会有效.</p>
+<pre><em>; 记事本</em>
+#If WinActive("ahk_class Notepad")
+#Space::MsgBox "You pressed WIN+SPACE in Notepad."
+::msg::You typed msg in Notepad
+
+<em>; MSPaint</em>
+#If WinActive("Untitled - Paint")
+#Space::MsgBox "You pressed WIN+SPACE in MSPaint!"
+::msg::You typed msg in MSPaint!</pre>
+<p class="note">想要了解更多信息以及类似的指令, 请查看 <a href="commands/_If.htm">#If</a> 页面.</p>
+<h3 id="s23">c. 一个文件包含多个热键/热字串</h3>
+<p>这是一些人的想法. 因此, 我在这里声明一下: AutoHotkey 有能力将<i>任意多</i> 的热键和热字串放在一个文件中. 不管是 1 个, 还是 3253 个(或者更多).</p>
+<pre>#i::Run "https://www.google.com/"
+
+^p::
+{
+    Run "notepad.exe"
+}
+
+~j::Send "ack"
+
+:*:acheiv::achiev
+::achievment::achievement
+::acquaintence::acquaintance
+:*:adquir::acquir
+::aquisition::acquisition
+:*:agravat::aggravat
+:*:allign::align
+::ameria::America</pre>
+<p>上面的代码是完全可以接受的. 多个热键, 多个热字串, 都包含在一个大的脚本文件里.</p>
+
+<h3 id="s24">d. 示例</h3>
+<pre class="NoIndent">::btw::by the way  <em>; 当您按下一个<a href="Hotstrings.htm#EndChars">默认的结束符</a>时, 用"by the way"替换掉"btw".</em></pre>
+<pre class="NoIndent">:*:btw::by the way  <em>; 替换"btw"为"By the way"而不需要按下结束符.</em></pre>
+<pre class="NoIndent">^n::  <em>; CTRL+N 热键</em>
+{
+    Run "notepad.exe"  <em>; 当你按下 Ctrl+N, 将启动记事本.</em>
+}  <em>; 热键内容结束, 这之后的内容将不会触发.</em></pre>
+<pre class="NoIndent">^b::  <em>; CTRL+B 热键</em>
+{
+    Send "{Ctrl down}c{Ctrl up}"  <em>; 复制选定的文本. 也可以使用 ^c, 但这种方法更加可靠.</em>
+    SendInput "[b]{Ctrl down}v{Ctrl up}[/b]" <em>; 将选定的文本包装在 BBCode 标签中, 以便在论坛中以粗体显示.</em>
+}  <em>; 热键内容结束, 这之后的内容将不会触发.</em></pre>
+
+<h2 id="s3">3 - 发送按键</h2>
+<p>现在你决定发送(输入) 一些按键到一个程序中. 你可以使用 <a href="commands/Send.htm">Send</a> 函数. 该函数表示发送按键, 模拟打字或按键操作.</p>
+<p>但是在我们准备使用 Send 之前, 还有一些常见问题要注意.</p>
+<p>就像热键一样, Send 函数也有一些特殊的键. </a> 这里列出 4 个最常见的特殊按键:</p>
+<table class="info">
+    <tr>
+        <th>符号</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td>!</td>
+        <td>发送 <kbd>Alt</kbd> 键. 例如, <code>Send "This is text!a"</code> 将发送按键序列 "This is text" 并接着按下 <kbd>Alt</kbd>+<kbd>A</kbd>. <strong>注意</strong>: <code>!A</code> 在某些程序中产生的效果与 <code>!a</code> 不同. 这是因为 <code>!A</code> 表示按下 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> 而 <code>!a</code> 表示按下 <kbd>Alt</kbd>+<kbd>A</kbd>. 如果不确定, 请使用小写字母.</td>
+    </tr>
+    <tr>
+        <td>+</td>
+        <td>发送 <kbd>Shift</kbd> 键. 例如, <code>Send "+abC"</code> 会发送文本 "AbC", 而 <code>Send "!+a"</code> 会按下 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>.</td>
+    </tr>
+    <tr>
+        <td>^</td>
+        <td>发送 <kbd>Control</kbd>(<kbd>Ctrl</kbd>) 键. 例如, <code>Send "^!a"</code> 会按下 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>A</kbd>, 而 <code>Send "^{Home}"</code> 则发送 <kbd>Ctrl</kbd>+<kbd>Home</kbd>. <strong>注意</strong>: <code>^A</code> 在某些程序中产生与 <code>^a</code> 不同的效果. 这是因为 <code>^A</code> 表示按下 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> 而 <code>^a</code> 表示按下 <kbd>Ctrl</kbd>+<kbd>A</kbd>. 如果不确定, 请使用小写字母.</td>
+    </tr>
+    <tr>
+        <td>#</td>
+        <td>发送 <kbd>Win</kbd> 键(带有 Windows logo 的按键), 因此
+        <code>Send "#e"</code> 会在按住 <kbd>Win</kbd> 键时按下字母 "e".</td>
+    </tr>
+</table>
+<p><a href="commands/Send.htm#keynames">Send 页面中有个很大的表格</a>展示了 AHK 内置的几乎所有特殊键. 请点击查看. 例如: <code>{Enter}</code> 和 <code>{Space}</code>.</p>
+<p class="warning"><strong>警告:</strong> 这个表<b>并不</b>适用于<a href="Hotkeys.htm">热键</a>. 也就是说, 当你使用 <kbd>Ctrl</kbd> 或 <kbd>Enter</kbd>(或其它按键) 作为热键时, 不要将它们括在 {} 中.</p>
+<p>一个例子显示了不应该对热键做的情景:</p>
+<pre><em>; 当你创建热键时...
+; 错误的</em>
+{LCtrl}::Send "AutoHotkey"
+
+<em>; 正确的</em>
+LCtrl::Send "AutoHotkey"
+</pre>
+<p>很多人都有一个共同的问题, 他们认为大括号放在文档中仅仅是为了好玩. 而实际上<b>大括号是需要的</b>. 它将告诉 AutoHotkey <code>{!}</code> 表示 "感叹号", 而不是要 "按下 <kbd>Alt</kbd> 键". 所以要仔细查看 <a href="commands/Send.htm">Send</a> 页上的特殊键表格, 确保在合适的地方加上大括号. 例如:</p>
+<pre>Send "This text has been typed{!}" <em>;  注意大括号中的感叹号? 这是因为, 如果没有 {}, AHK 将按下 Alt 键.</em>
+</pre>
+<pre><em>; 跟上面的例子类似, 只是这次是 Enter 键. AHK 将会输出 "Enter"
+; 如果 Enter 没有加上 {} 的话.</em>
+Send "Multiple Enter lines have Enter been sent." <em>; 错误的</em>
+Send "Multiple{Enter}lines have{Enter}been sent." <em>; 正确的</em>
+</pre>
+<p>另一个常见的错误是, 人们认为当使用 Send 函数时, <b>所有内容</b>都需要加上大括号. 这是不对的. 如果不在特殊按键列表中, 没必要加大括号. 你<b>不</b>需要给普通字符, 数字加上括号, 甚至像.(句点) 这些符号加上 {}. 而且, 当你在使用 Send 函数时, 你可以一次性发送多个字符, 数字或符号. 所以没有必要为每一个字符写上一条 Send 函数. 例如::</p>
+<pre>Send "{a}"       <em>; 错误的</em>
+Send "{b}"       <em>; 错误的</em>
+Send "{c}"       <em>; 错误的</em>
+Send "{a}{b}{c}" <em>; 错误的</em>
+Send "{abc}"     <em>; 错误的</em>
+Send "abc"       <em>; 正确的</em></pre>
+
+<p>想要表示按住或松开某个按键, 可以将这个键用花括号围起来, 同时加上单词 UP 或 DOWN. 例如:</p>
+<pre><em>; 下面这个例子表示按下一个键的时候再按下另一个键(或多个键)..
+; 如果其中一个方法不奏效, 试试另一个.</em>
+Send "^s"                     <em>; 表示发送 CTRL+S</em>
+Send "{Ctrl down}s{Ctrl up}"  <em>; 表示发送 CTRL+S</em>
+Send "{Ctrl down}c{Ctrl up}"
+Send "{b down}{b up}"
+Send "{Tab down}{Tab up}"
+Send "{Up down}"  <em>; 按下向上键.</em>
+Sleep 1000        <em>; 保持 1 秒.</em>
+Send "{Up up}"    <em>; 然后松开向上键.</em></pre>
+
+<p>现在你可能会想, <i>"怎样才能让我在发送超长文本时保证可读性?"</i>. 很简单. 使用我们所说的延续片段. 只需要在新行指定一个开括号, 然后是内容, 最后在它自己的行上加上一个闭括号. 想了解更多信息, 请阅读<a href="Scripts.htm#continuation">延续片段</a>.</p>
+<pre>Send "
+(
+Line 1
+Line 2
+Apples are a fruit.
+)"</pre>
+<p class="note"><strong>注意:</strong> Send 有几种不同的形式. 每种形式有其特性. 如果一种形式的 Send 函数不能满足你的需要, 可以试试另一种形式. 只需要将函数名称 "Send" 替换成接下来的其中一个: SendText, SendInput, SendPlay, SendEvent. 想要了解每一个命令的详细内容, <a href="commands/Send.htm">请阅读这里</a>.</p>
+
+<h3 id="s31">a. 游戏 </h3>
+<p class="warning"><strong>非常重要:</strong> 很多游戏, 尤其是新出的游戏, 都有反作弊系统, 例如 GameGuard, Hackshield, PunkBuster 等. 且不说绕开反作弊系统是违反游戏规定的, 绕开反作弊本身也不太容易实现.</p>
+<p>如果游戏的反作弊系统导致你的热键, 热字串和 Send 函数失效, 你是不走运的. 然而有一些方法也许能提高在某些游戏中使用热键的可能性, 但<i>没人能打包票一定能行</i>. 所以, 尽可能尝试<b>所有</b>你能想到的办法, 不要轻易放弃.</p>
+
+<p>还有一个关于 DirectX 的问题要注意. 当你在 DirectX 游戏中使用 AutoHotkey 碰到问题时, 试试 <a href="FAQ.htm#games">FAQ</a> 页面中描述的情况. 
+当你使用 PixelSearch, PixelGetColor 或 ImageSearch 时, 你可能会碰到更多关于 DirectX 的问题. 画面颜色可能会变成黑色(0x000000), 不管你设置的是什么颜色. 如果可能的话, 试试用窗口模式运行游戏. 这样做能够解决一些 DirectX 问题.</p>
+<p>没有万能的办法能确保 AutoHotkey 能运行在所有程序里. 如果你试了所有的办法还是不行, 也许 AutoHotkey 暂时无法满足你的需要.</p>
+
+<h2 id="s4">4 - 打开程序 &amp; 网页</h2>
+<p>想要打开诸如<i>画图(mspaint.exe), 计算器(calc.exe), 脚本.ahk</i> 或一个文件夹, 你可以使用 <a href="commands/Run.htm">Run</a> 函数. 你还可以用这个命令打开一个网址, 比如 <a href="https://www.autohotkey.com/">https://www.autohotkey.com/</a>. 如果你想打开一个已经安装好的程序, 也很简单, 就像这样:
+<pre><em>; 运行一个程序. 注意 大部分的程序可能需要完整路径:</em>
+Run A_ProgramFiles "\Some_Program\Program.exe"
+
+<em>; 打开一个网址:</em>
+Run "https://www.autohotkey.com"</pre>
+<p>打开一个网址. 如果您想了解更多这方面的知识, 请访问 <a href="commands/Run.htm">Run</a> 页面. </p>
+<p>下面是一些示例:</p>
+<pre><em>; 一些程序并不需要完整路径, 如 Windows 标准程序:</em>
+Run "notepad.exe"
+Run "mspaint.exe"
+
+<em>; 使用<a href="Variables.htm#BuiltIn">内置变量</a></em>来打开 "我的文档":</em>
+Run A_MyDocuments
+
+<em>; 打开一些网页:</em>
+Run "https://www.autohotkey.com"
+Run "https://www.google.com"</pre>
+<p class="note">想要深入了解更多信息和示例, 请查看 <a href="commands/Run.htm">Run</a> 页面.</p>
+
+<h2 id="s5">5 - 命令和函数</h2>
+<p>AutoHotkey 有两个重要的工具供开发者使用: 命令和函数.</p>
+<p class="note">所有命令和内置函数的列表可以在<a href="commands/index.htm">这里</a>找到.</p>
+<h3>命令</h3>
+<p>你可以通过语法来分辨命令和函数. 命令后面的参数无需使用圆括号, 而函数需要使用. 所以命令就像下面这样:</p>
+<pre>Command, Parameter1, Parameter2, Parameter3</pre>
+<p>当你使用命令时, 不能将几条命令放在同一行(<a href="commands/IfEqual.htm">IfEqual</a> 除外). 也不能将一个命令作为参数插入到另一个命令. 例如:</p>
+<pre>MsgBox, Hello Run, notepad.exe   <em>; 错误</em>
+MsgBox, Hello, Run, notepad.exe  <em>; 错误</em>
+
+MsgBox, Hello      <em>; 正确</em>
+Run, notepad.exe</pre>
+
+<p>跟函数不同的是, 命令使用"传统语法". 也就是说: 你</strong>需要</strong>百分号包围变量, 比如 <code>%Var%</code>. 而文本和数字则不需要加双引号. <code>This is some text</code>. 另外, 与函数不同, 命令的参数不能进行运算.</p>
+<p class="note">如果确实想要在参数中进行运算, 可以使用单个 <code>%</code> 来强制定义一个表达式, 但我们这里将不涉及这些内容.</p>
+<h3>函数</h3>
+<p>如上所述, 函数不同于命令的地方在于函数需要使用圆括号. 一个典型的函数是这样的:</p>
+<pre>Function(Parameter1, Parameter2, Parameter3)</pre>
+<p>函数有下面几个主要差异:</p>
+<ol>
+    <li>你可以使用运算:
+        <pre>SubStr(37 * 12, 1, 2)
+SubStr(A_Hour - 12, 2)</pre>
+    </li>
+    <li>变量前后不需要加上百分号:
+        <pre>SubStr(A_Now, 7, 2)</pre>
+    </li>
+    <li>函数可以嵌套另一个函数:
+        <pre>SubStr(A_AhkPath, InStr(A_AhkPath, "AutoHotkey"))</pre>
+    </li>
+    <li>文本前后需要加上双引号:
+        <pre>SubStr("I'm scripting, awesome!", 16)</pre>
+    </li>
+</ol>
+
+<p>函数通常会返回一个值, 这一点与命令也不一样. 命令需要设置 <i>OutputVar</i> 参数来保存结果, 而函数不需要. 将函数值赋给变量的最常用方法, 只需要这样做:</p>
+<pre><span style="color:#ff4400"><b>MyVar</b></span> := SubStr("I'm scripting, awesome!", 16)</pre>
+<p class="note">这不是赋值的唯一方法, 但这是最常用的. 您使用 <code>MyVar</code> 来存储函数的返回值, 即写在 <code>:=</code> 运算符的右边. 有关详情, 请参阅<a href="Functions.htm">函数</a>.</p>
+<p>简而言之:</p>
+<pre><em>; 这些是命令:</em>
+MsgBox, This is some text.
+StringReplace, Output, Input, AutoHotkey, AutoHotKey, All
+SendInput, This is awesome{!}{!}{!}
+
+<em>; 这些是函数:</em>
+SubStr("I'm scripting, awesome!", 16)
+FileExist(VariableContainingPath)
+Output := SubStr("I'm scripting, awesome!", 16)</pre>
+
+<h3 id="s51">a. 代码块</h3>
+<p><a href="commands/Block.htm">代码块</a>就是用一对大括号(<code>{</code> 和 <code>}</code>) 包围起来的代码行. 们将一段代码组合在一起, 这样 AutoHotkey 判断这些代码是一个整体. 它们通常与函数和控制流语句(如 <a href="commands/If.htm">If</a> 和 <a href="commands/Loop.htm">Loop</a>) 一起使用. 如果不使用大括号, 只调用块中的第一行.</p>
+<p>在下面的代码中, 只有当 <em>MyVar</em> 等于 5 时, 才运行这两行代码:</p>
+<pre>if (MyVar = 5)
+{
+    MsgBox "MyVar equals %MyVar%!!"
+    ExitApp
+}</pre>
+<p>在下面的代码中,  只有当 <em>MyVar</em> 等于 5 时, 才能显示消息框. 脚本总是会终止退出, 而不管 <em>MyVar</em> <b>是否等于</b> 5:</p>
+<pre>if (MyVar = 5)
+    MsgBox "MyVar equals " MyVar "!!"
+    ExitApp</pre>
+<p>这完全没问题, 因为 if-语句只有一行代码与之关联. 它和上面的完全一样, 但是我把第二行缩进了, 所以我们知道它和 if-语句是分开的:</p>
+<pre>if (MyVar = 5)
+    MsgBox "MyVar equals " MyVar "!!"
+MsgBox "我们在 if-语句的 '外部'. 我们不需要大括号, 因为 if-语句下面只有一行."</pre>
+
+<h2 id="s6">6 - 变量</h2>
+<p><a href="Variables.htm">变量</a>就像一个包含信息的便利贴. 它可以用于函数或数学表达式中, 充当存储文本, 数字, 数据的作用. 如果没有变量, 程序和脚本将会非常乏味.</p>
+<p>给变量赋值有很多方法, 我们将会讨论最常见的几种方法. 请特别留意冒号等号(<code>:=</code>).</p>
+<dl>
+    <dt>文本赋值</dt>
+    <dd>
+        <pre class="NoIndent">MyVar := "Text"</pre>
+        <p>这是给变量赋值最简单的方法. 只需输入文本并完成. 任何文本都需要加引号.</p>
+    </dd>
+    <dt>变量赋值t</dt>
+    <dd>
+        <pre class="NoIndent">MyVar := MyVar2</pre>
+        <p>和上面的方法类似, 只是你将一个变量所对应的值赋给了另一个变量.</p>
+    </dd>
+    <dt>数字赋值</dt>
+    <dd>
+        <pre class="NoIndent">MyVar := 6 + 8 / 3 * 2 - Sqrt(9)</pre>
+        <p>感谢表达式, 你可以进行计算!</p>
+    </dd>
+    <dt>混合赋值</dt>
+    <dd>
+        <pre class="NoIndent">MyVar := "The value of 5 + " MyVar2 " is: " 5 + MyVar2</pre>
+        <p>以上三个赋值的组合.</p>
+    </dd>
+</dl>
+<p class="note">等号(<b>=</b>) 和它前面的符号, 如 <code>:=</code> <code>+=</code> <code>-=</code> <code>.=</code> 等等, 这些被称为<b>赋值运算符</b>, 并且总是需要一个表达式.</p>
+
+<h3 id="s61">a. 什么时候使用百分号</h3>
+<p>关于变量一个最常见的问题是什么时候使用百分号(<b>%</b>). 希望下面这些内容能够消除一些困惑.</p>
+<p>什么时候要使用百分号:</p>
+<ul>
+    <li>当你使用命令时(见前文), 参数是输出变量 <em>OutputVar</em> 时除外.</li>
+    <li>当您希望在加引号的字符串中使用变量的内容时(请参阅前一节中的第二个方法).</li>
+</ul>
+<p>什么时候<b>不要</b>使用百分号:</p>
+<ul>
+    <li>参数中的输出变量. 例如: <code>StrLen, <strong>OutputVar</strong>, %InputVar%</code></li>
+    <li>赋值时的左边: <code><strong>Var</strong> := "123abc"</code></li>
+    <li>表达式中的任意位置(但在加引号字符串的之外). 例如:
+      <pre>
+if (<strong>Var1</strong> != <strong>Var2</strong>)
+    <strong>Var1</strong> := <strong>Var2</strong> + 100</pre></li>
+</ul>
+
+<h3 id="s62">b. 获取用户输入</h3>
+<p>有时候你想让用户来选择某些值. 这可以有很多种方法, 但其中最简单的办法就是使用 <a href="commands/InputBox.htm">InputBox</a>. 下面的例子展示了如何向用户提出一系列问题并根据用户的输入完成一些事情:</p>
+<pre>OutputVar := InputBox("What is your first name?", "Question 1").Value
+if (OutputVar = "Bill")
+    MsgBox "That's an awesome name, " OutputVar "."
+
+OutputVar2 := InputBox("Do you like AutoHotkey?", "Question 2").Value
+if (OutputVar2 = "yes")
+    MsgBox "Thank you for answering " OutputVar2 ", " OutputVar "! We will become great friends."
+else
+    MsgBox OutputVar ", That makes me sad."</pre>
+
+<h3 id="s63">c. 其它示例?</h3>
+<pre class="NoIndent">Result := <a href="commands/MsgBox.htm">MsgBox</a>("Would you like to continue?",, 4)
+if <a href="commands/MsgBox.htm#Result">Result</a> = "No"
+    return  <em>; 如果选择 No, 则停止代码继续.</em>
+MsgBox "You pressed YES."  <em>; 否则, 用户选择了 YES.</em></pre>
+<pre class="NoIndent"><em>; 下面的例子展示了什么时候该使用百分号, 什么时候不该:</em>
+Var := "text"  <em>; 赋值一些文本给一个变量.</em>
+Number := 6  <em>; 赋值一个数字给一个变量.</em>
+Var2 := Var  <em>; 赋值一个变量给另一个.</em>
+Var3 .= Var  <em>; 追加一个变量到另一个的末尾.</em>
+Var4 += Number  <em>; 将变量的值与另一个相加.</em>
+Var4 -= Number  <em>; 将变量的值减去另一个.</em>
+Var5 := SubStr(Var, 2, 2)  <em>; 变量在函数中.</em>
+Var6 := Var "Text"  <em>; 赋值一个变量给另一个变量并带有一些额外的文本.</em>
+MsgBox(Var)  <em>; 变量在函数中.</em>
+MsgBox Var  <em>; 同上.</em>
+Var := StrSplit(Var, "x")  <em>; 变量在函数中, 用作 InputVar 和 OutputVar.</em>
+if (Number = 6)  <em>; 检查变量是否等于一个数字.</em>
+if Number = 6  <em>; 同上.</em>
+if (Var != Number)  <em>; 检查变量是否等于另一个.</em>
+if Var1 &lt; Var2  <em>; 检查一个变量是否小于另一个变量.</em></pre>
+<h2 id="s7">7 - 对象</h2>
+<p><a href="Objects.htm">对象</a>是一种组织数据以实现更高效使用的方法. 有时候对象被当作数组, 在这重点声明一下所有的数组都是对象. 我们调用对象不同的东西取决于我们使用它们的目的, 但是所有对象都是相同的.</p>
+<p>对象基本上是变量的集合. 变量的名称叫做"键", 变量的内容叫做"值".</p>
+<p>当你听到人们把一个对象叫做 <i>数组</i> 或 <i>索引数组</i>时, 说明这个对象的键是从 1 开始递增的连续数字. 当你听到人们把一个对象叫做 <i>关联数组</i>, 说明这个对象的键要么使用字符串(或文本), 要么使用不连续的数字. 有时可能是两者的混合, 也有可能是数列!</p>
+<p>一个对象的键和值可以是什么, 没有任何限制, 它们甚至可以是另一个数组! 如果一个对象的值也是数组, 我们把它叫做 <i>嵌套数组</i>, 这个我们以后再解释.</p>
+<p>您可能想要使用对象的原因有很多, 一些例子:</p>
+<ul>
+    <li>当你需要描述一组有序列表时, 比如杂货店列表(这种情况最好使用索引数组)</li>
+    <li>当你需要描述一个图形方格时, 比如一个棋盘游戏(这种情况最好使用嵌套对象)</li>
+    <li>当你需要描述一组事物而每样事物都有自己的名称时, 比如描述水果的特性(这种情况最好使用关联数组)</li>
+</ul>
+
+<h3 id="s71">a. 创建对象</h3>
+<p>我们有很多方法可以创建对象, 下面介绍最常用的几种方法:</p>
+<dl>
+    <dt>方括号语法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject := ["one", "two", "three", 17]</pre>
+        <p>这将从有时被称为"索引数组"的内容开始. 索引数组是一个表示项目列表的对象, 索引号从 1 开始连续递增. 在本例中, 值 <code>"one"</code> 存储在对象键 <code>1</code>(又叫做索引号1), 值 <code>17</code> 存储在对象键 <code>4</code>(又叫做索引号 4).</p>
+    </dd>
+    <dt>大括号语法</dt>
+    <dd>
+        <pre class="NoIndent">Banana := {"Color": "Yellow", "Taste": "Delicious", "Price": 3}</pre>
+        <p>这将通过定义有时被称为"关联数组"来开始. 关联数组是数据的集合, 其中每个条目都有自己的名称. 在这个例子中, 值 <code>"Yellow"</code> 存储在对象键 <code>"Color"</code> 中. 同样的, 值 <code>3</code> 存储在对象键 <code>"Price"</code> 中.</p>
+    </dd>
+    <dt>数组函数</dt>
+    <dd>
+        <pre class="NoIndent">MyObject := Array("one", "two", "three", 17)</pre>
+        <p>这种方式跟方括号语法形式一样, 区别仅仅是采用了函数的形式.</p>
+    </dd>
+    <dt>对象函数</dt>
+    <dd>
+        <pre class="NoIndent">Banana := Object("Color", "Yellow", "Taste", "Delicious", "Price", 3)</pre>
+        <p>这种方式跟大括号语法形式一样, 区别仅仅是采用了函数的形式.</p>
+    </dd>
+</dl>
+<p>请注意, 所有这些方法都创建了同一样东西(也就是对象), 区别仅仅是对象的键不一样.</p>
+
+<h3 id="s72">b. 使用对象</h3>
+<p>使用对象有很多方式, 包括检索值, 设置值, 添加更多的值等等.</p>
+
+<h4>设置值:</h4>
+<dl>
+    <dt>方括号表示法</dt>
+    <dd>
+        <pre class="NoIndent">Banana["Pickled"] := True <em>; 这个香蕉烂透了. 呃...</em></pre>
+        <p>在对象中设置值跟设置变量的值一样简单. 你需要做的是把方括号所代表的值在表达式赋值运算符 <code>:=</code> 的左边.</p>
+    </dd>
+    <dt>句点表示法</dt>
+    <dd>
+        <pre class="NoIndent">Banana.Consistency := "Mushy"</pre>
+        <p>和上面一样, 但是用点(.) 符号.</p>
+    </dd>
+</dl>
+
+<h4>检索值:</h4>
+<dl>
+    <dt>方括号表示法</dt>
+    <dd>
+        <pre class="NoIndent">Value := Banana["Color"]</pre>
+        <p>这允许你使用表达式作为键从对象中获取值. 在这个例子中, 我使用表达式 <code>"Color"</code>, 不要惊讶我仅使用键 <code>Color</code> 就会得到一个包含单词 "Yellow" 的值, 因为我们事先(在<a href="#s71">上一节</a>) 就设置了键 <code>Color</code>.</p>
+    </dd>
+    <dt>句点表示法</dt>
+    <dd>
+        <pre class="NoIndent">Value := Banana.Color</pre>
+        <p>仅允许使用原样的字串作为键名. 在句点表示法中键名不能使用变量.</p>
+    </dd>
+</dl>
+
+<h4>增加新的键和值:</h4>
+<dl>
+    <dt>方括号表示法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject["NewerKey"] := 3.1415</pre>
+        <p>想要直接添加一对键和值, 只需设置一个尚不存在的键即可.</p>
+    </dd>
+    <dt>句点表示法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject.NewKey := "Shiny"</pre>
+        <p>和上面一样, 但是用点符号.</p>
+    </dd>
+    <dt>InsertAt(在..插入) 法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject.InsertAt(Index, Value1, Value2, Value3...)</pre>
+        <p><i>Index(索引)</i> 为任意整数键. 这会将所有更高的整数键的索引向上移动插入值的数量, 即使是空缺的也一样(例如, 假设只有键 1 和 100 存在, 当插入一个值到第 50 个键的位置时, 将导致原来位于 100 的键的索引变成 101).</p>
+    </dd>
+    <dt>Push(推送) 法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject.Push(Value1, Value2, Value3...)</pre>
+        <p>"追加" 值到数组 <i>MyObject</i> 的尾部. 换句话说, 它将插入的值放在 最高整数键 + 1 的位置.</p>
+    </dd>
+</dl>
+
+<h4>移除键和值:</h4>
+<dl>
+    <dt>用空白填充值</dt>
+    <dd>
+        <pre class="NoIndent">Banana.Consistency := ""</pre>
+        <p>最简单的删除值的方法就是用空白填充. 你可以将其赋值为 ""(两个连续的双引号), 也就是常说的 <i>空字符串</i>. 这不会删除键, 但是它将使值看起来与从未赋值一样. 可以通过使用 <a href="objects/Object.htm#HasKey">HasKey</a> 方法得知键依然存在, 而且键也会出现在 <a href="commands/For.htm">For</a> 循环中. (我们一会再解释 For 循环)</p>
+    </dd>
+    <dt>删除法</dt>
+    <dd>
+        <pre class="NoIndent">RemovedValue := MyObject.Delete(AnyKey)</pre>
+        <p>这和接下来的方法将删除键 <i>和</i> 值. <code>MyObject[AnyKey]</code> 先前的值将存储在 <i>RemovedValue</i> 中.</p>
+        <pre class="NoIndent">NumberOfRemovedKeys := MyObject.Delete(FirstKey, LastKey)</pre>
+        <p>允许你删除 <em>FirstKey</em> 和 <em>LastKey</em> 之间的一系列的编号/整数或字符串键. 它给出的值将是被删除的键的数量, 如果你的键之间有间隙, 这是有用的(例如你指定键从 1 到 4, 但是键 2 不存在, 这将设置 <em>NumberOfRemovedKeys</em> 为 3, 因为只有三个键被移除).</p>
+    </dd>
+    <dt>Pop(抛出) 法</dt>
+    <dd>
+        <pre class="NoIndent">MyObject.Pop()</pre>
+        <p>这将删除最高的整数键, 并返回这个键对应的值. 而且这种形式不会影响其它键的索引顺序(因为没有比它更高的序列了).</p>
+    </dd>
+    <dt>RemoveAt(在..删除) 方法</dt>
+    <dd>
+
+        <pre class="NoIndent">RemovedValue := MyObject.RemoveAt(Index)</pre>
+        <pre class="NoIndent">NumberOfRemovedKeys := MyObject.RemoveAt(Index, Length)</pre>
+        <p>这将移除从 <i>Index</i> 到 <i>Index + Length - 1</i>(包含) 之间的所有键(例如 Index 为 5, Length 为 3, 则将删除键 5, 6, 7 这三个键). 如果 <i>Length</i> 省略则默认为 1. 移除这些键之后, 更高数字或整数的键将向下填充空缺, 所以如果有个值位于 <i>Index + Length</i> 那么它现在的位置就是 <i>Index</i>. 这很像 InsertAt 方法操作多个指定值的操作.</p>
+    </dd>
+</dl>
+
+<h2 id="s8">8 - 其他有用的东西</h2>
+<p>亲爱的朋友, 当你阅读到这里, 说明快要结束我们这段旅程了. 我希望你有所收获. 最后, 我将告诉你一些我认为你可能有用的东西. 希望你过的愉快!</p>
+
+<h3 id="s81">a. 神秘的 [ ]</h3>
+<p>在帮助文档中, 你可能会发现有两个符号(<code>[</code> 和 <code>]</code>) 经常出现在几乎每一页开头的黄色代码框中. 方括号中的内容代表<b><i>可选的</i></b>. 也就是说, 如果你不需要这些参数你完全可以不管它. 不过要强调一点, 当你在写代码时, 千万<b>不要</b>把 [ ] 也写上了.</p>
+<p>例如, 在 <a href="commands/ControlGetText.htm">ControlGetText</a> 页面, 你可能会看到这段代码:</p>
+<pre class="Syntax">Text := <span class="func">ControlGetText</span>(Control <span class="optional">, WinTitle, WinText, ExcludeTitle, ExcludeText</span>)</pre>
+<p>如果你愿意, 你可以简单地写成这样:</p>
+<pre>Text := ControlGetText(Control)</pre>
+<p>或者再加上一些细节:</p>
+<pre>Text := ControlGetText(Control, WinTitle)</pre>
+<p>如果你想只使用参数 <em>ExcludeTitle</em> 而不想使用参数 <em>WinText</em> 或 <em>WinTitle</em> 怎么办? 很简单!</p>
+<pre>Text := ControlGetText(Control,,, ExcludeTitle)</pre>
+<p>请注意, 你不能忽略参数, 只是需要将它们的位置留空. 如果你像下面这样忽略 <code>WinTitle, WinText</code>, 将会产生错误:</p>
+<pre>Text := ControlGetText(Control, ExcludeTitle)</pre>
+
+<h3 id="s82">b. 查找你的 AHK 版本</h3>
+<p>你可以运行下面的代码来查看你的 AHK 版本信息:</p>
+<pre>MsgBox A_AhkVersion</pre>
+<p>你也可以到开始菜单或安装路径下的帮助文件(AutoHotkey.chm) 中查找.</p>
+
+<h3 id="s83">c. 尝试与错误</h3>
+<p>尝试和错误是非常普遍而高效的学习方法. 与动不动就问这问那相比, 有时候花点时间(也许是长年累月) 亲手尝试可能会学的更快.</p>
+<p>如果你在尝试新东西的过程碰到错误, 不要紧, 就从解决这个错误开始. 尝试解决这个错误, 一次不行就两次. 多次尝试后还是解决不了, 可以打开帮助文件学习哪些能做哪些不能做, 然后修改你的代码再试试. 试试, 失败, 试试, 失败, 试试, 试试, 再试试, 失败, 失败, <b>成功!</b></p>
+<p>这也是很多大师们的学习经历. 不过也不要害怕提问, 我们不会咬人(至少不会咬的太狠). 学习总需要时间慢慢积累, 大师也不是一天练成的.</p>
+<p class="Note">"若最初你没有成功, 努力, 努力, 不断的努力." - 威廉 · 爱德华 · 希克森.</p>
+<h3 id="s84">d. 缩进</h3>
+<p>缩进这个事非常重要! 你的代码没有它也能正常运行, 可是如果没有缩进会让阅读代码变成一件非常痛苦的事. 也许一小段代码(少于 25 行) 不用缩进也没有太大关系, 但是代码一旦增多, 缩进就非常有必要. 所以, 学习使用缩进越快越好. 缩进没有固定的风格, 但最好保持一种风格.</p>
+<p>"<b>什么是缩进?</b>" 你可能会问? 简单的说就是在代码和页面边界保留一段距离, 这样可以区分这一段代码是属于哪一段代码. 有些人习惯使用 3, 4 个空格或 1 个 tab 来表示缩进, 每一级用一次缩进.</p>
+<p>不用缩进:</p>
+<pre>if (car = "old")
+{
+MsgBox "The car is really old."
+if (wheels = "flat")
+{
+MsgBox "This car is not safe to drive."
+return
+}
+else
+{
+MsgBox "Be careful! This old car will be dangerous to drive."
+}
+}
+else
+{
+MsgBox "My, what a shiny new vehicle you have there."
+}</pre>
+<p>使用缩进:</p>
+
+<pre>if (car = "old")
+{
+    MsgBox "The car is really old."
+    if (wheels = "flat")
+    {
+        MsgBox "This car is not safe to drive."
+        return
+    }
+    else
+    {
+        MsgBox "Be careful! This old car will be dangerous to drive."
+    }
+}
+else
+{
+    MsgBox "My, what a shiny new vehicle you have there."
+}</pre>
+<p>关于缩进, 维基百科上<a href="https://en.wikipedia.org/wiki/Indentation_style">缩进样式</a>页面有很多风格示例. 建议选一种你喜欢的或你认为最容易阅读的风格来学习.</p>
+
+<h3 id="s85">e. 寻求帮助</h3>
+<p>在你提问之前, 最好自己先研究一下或者自己先动手试着写代码. 如果自己实在得不到满意的结果, 请往下看.</p>
+<ul>
+    <li>不要害怕提问, 即使是世界上最聪明的人也需要别人的帮助.</li>
+    <li>不要害怕给别人看你写的代码, 就算你觉得代码有点弱智.</li>
+    <li>将所有你尝试的代码都贴出来.</li>
+    <li>假设<i>其他人</i> 都是门外汉. 把你掌握的所有信息都教给我们这些门外汉. 帮助我们就是帮助你自己.</li>
+    <li>耐心.</li>
+    <li>礼貌.</li>
+    <li>开放.</li>
+    <li>友善.</li>
+    <li>祝你好运!</li>
+</ul>
+<p>如果你没有马上得到答案, 至少等一天再提问. 我们乐于助人, 但是我们也是在自己的空余时间里免费提供帮助. 也许我们正在工作, 睡觉, 玩游戏, 和家人在一起或太忙了, 没有时间帮忙p.</p>
+<p>在等待帮助时, 你也可以试着自己动手解决. 独立解决问题的感觉相当不错.</p>
+
+<h3 id="s86">f. 其他链接</h3>
+<p><a href="FAQ.htm">常见问题(FAQ)</a></p>
+</body>
+</html>

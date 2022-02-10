@@ -1,0 +1,71 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>Loop - 语法 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="The Loop statement performs a series of code lines repeatedly: either the specified number of times or until a Break statement is encountered." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>Loop (normal)</h1>
+
+<p>重复执行一系列函数: 可以指定表示重复次数的数字或直到遇到 <a href="Break.htm">break</a>.</p>
+
+<pre class="Syntax"><span class="func">Loop</span> <span class="optional">Count</span></pre>
+<h2 id="Parameters">参数</h2>
+<dl>
+
+  <dt>Count</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#numbers">整数</a></p>
+    <p>执行循环的次数(迭代). 如果省略, 则 Loop 无限地继续直到遇到 <a href="Break.htm">break</a> 或 <a href="Return.htm">return</a>. 但是, 显式的空值或小于 1 的数字将导致完全跳过循环.</p>
+    <p><em>Count</em> 只在循环开始之前计算一次. 例如, 如果 <em>Count</em> 有附加作用的表达式(如 函数调用或赋值), 附加作用仅发生一次.</p>
+    <p>如果 <em>Count</em> 用括号括起来, 则不需要空格或制表符. 例如: <code>Loop(2)</code></p>
+  </dd>
+
+</dl>
+
+<h2 id="Remarks">备注</h2>
+<p>循环语句后通常跟着<a href="Block.htm">区块</a>, 这是构成循环 <em>主体</em> 语句的集合. 但是, 在单语句的循环中可以不使用区块(用于此目的时 "if" 与其相匹配的 "else" 一起被视为单语句).</p>
+<p>这个语句的一个常见用法是无限循环, 然后在循环 <em>主体</em> 中的某个地方使用 <a href="Break.htm">break</a> 语句来确定何时停止循环.</p>
+<p>在循环中鼓励使用 <a href="Break.htm">break</a> 和 <a href="Continue.htm">continue</a> 代替 <a href="Goto.htm">goto</a>, 因为它们通常可以让脚本更容易理解和维护. 也可以通过将循环 <em>主体</em> 的第一个或最后一个语句作为有条件地发出 <a href="Break.htm">break</a> 语句的 IF 语句来创建 "While" 或 "Do...While/Until" 语句, 但使用 <a href="While.htm">While</a> 或 <a href="Until.htm">Loop...Until</a> 通常是首选的.</p>
+<p>内置变量 <strong>A_Index</strong> 包含当前循环迭代的次数. 首次执行循环 <em>主体</em> 时其值为 1. 第二次时其值为 2; 依此类推. 如果一个内层循环包含在一个外层循环中, 那么内层循环具有优先权. A_Index 在所有类型的循环中都有效, 包括 <a href="LoopFiles.htm">file-loops</a> 和 <a href="LoopReg.htm">registry-loops</a>; 但是在循环外部时 A_Index 值为 0.</p>
+<p>A_Index 可以由脚本赋值为任何整数值. 如果指定 <em>Count</em>, 则更改 A_Index 会影响将要执行的迭代次数. 例如, <code>A_Index := 3</code> 会使循环语句的行为好像是第三次迭代(A_Index 将在下一次迭代为 4), 而 <code>A_Index--</code> 将防止当前迭代计入总数中.</p>
+<p>可以选择使用 <a href="Block.htm#otb">One True Brace(OTB) 样式</a>. 例如:</p>
+<pre>Loop {
+    ...
+}
+Loop RepeatCount {
+    ...
+}</pre>
+<p>专用循环: 循环可以用来自动检索文件, 文件夹或注册表项(每次一个). 有关详情, 请参阅 <a href="LoopFiles.htm">file-loop</a> 和 <a href="LoopReg.htm">registry-loop</a>. 此外, <a href="LoopRead.htm">file-reading loops</a> 可以对整个文件的内容进行操作, 每次一行. 最后, <a href="LoopParse.htm">parsing loops</a> 可以对可分隔的字符串中包含的各个字段进行操作.</p>
+<h2 id="Related">相关</h2>
+<p><a href="Until.htm">Until</a>, <a href="While.htm">While-loop</a>, <a href="For.htm">For-loop</a>, <a href="LoopFiles.htm">Files-and-folders loop</a>, <a href="LoopReg.htm">Registry loop</a>, <a href="LoopRead.htm">File-reading loop</a>, <a href="LoopParse.htm">Parsing loop</a>, <a href="Break.htm">Break</a>, <a href="Continue.htm">Continue</a>, <a href="Block.htm">Blocks</a></p>
+<h2 id="Examples">示例</h2>
+<div class="ex" id="ExBasic">
+<p><a href="#ExBasic">#1</a></p>
+<pre>Loop 3
+{
+    MsgBox "Iteration number is " A_Index  <em>; A_Index will be 1, 2, then 3</em>
+    Sleep 100
+}</pre>
+</div>
+
+<div class="ex" id="ExBreakContinue">
+<p><a href="#ExBreakContinue">#2</a></p>
+<pre>Loop
+{
+    if (A_Index &gt; 25)
+        break  <em>; 终止循环</em>
+    if (A_Index &lt; 20)
+        continue <em>; 跳过后面并开始新的迭代</em>
+    MsgBox "A_Index = " A_Index <em>; 这里将仅显示数字 20 到 25</em>
+}</pre>
+</div>
+
+</body>
+</html>

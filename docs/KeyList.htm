@@ -1,0 +1,484 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>按键列表(键盘, 鼠标和操纵杆) | AutoHotkey v2</title>
+<meta name="description" content="This page lists all mouse buttons, keyboard keys and joystick buttons which can be used for hotkeys and key-specific functions." />
+<meta name="keywords" content="keyboard,keys,key,mouse,buttons,button,joystick,create,hotkeys,hotkey,macros">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="static/theme.css" rel="stylesheet" type="text/css" />
+<script src="static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>按键列表<span class="headnote">(键盘, 鼠标和操纵杆)</span></h1>
+<h2 id="toc">目录</h2>
+<ul>
+  <li><a href="#mouse">鼠标</a>
+    <ul>
+      <li><a href="#mouse-general">常规按钮</a></li>
+      <li><a href="#mouse-advanced">高级按钮</a></li>
+      <li><a href="#mouse-wheel">滚轮</a></li>
+    </ul>
+  </li>
+  <li><a href="#keyboard">键盘</a>
+    <ul>
+      <li><a href="#general">常规按键</a></li>
+      <li><a href="#cursor">光标控制按键</a></li>
+      <li><a href="#numpad">数字键盘</a></li>
+      <li><a href="#function">功能按键</a></li>
+      <li><a href="#modifier">修饰按键</a></li>
+      <li><a href="#multimedia">多媒体按键</a></li>
+      <li><a href="#other">其他按键</a></li>
+    </ul>
+  </li>
+  <li><a href="#Joystick">操纵杆</a></li>
+  <li><a href="#remote">手持遥控</a></li>
+  <li><a href="#SpecialKeys">特殊按键</a></li>
+  <li><a href="#IME">CapsLock 和 IME</a></li>
+</ul>
+
+<h2 id="mouse">鼠标</h2>
+<h3 id="mouse-general">常规按钮</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">LButton</td>
+    <td>主鼠标按钮. 对应哪个物理按钮取决于系统设置; 默认情况下, 它是鼠标左键.</td>
+  </tr>
+  <tr>
+    <td>RButton</td>
+    <td>副鼠标按钮. 对应哪个物理按钮取决于系统设置; 默认情况下, 它是鼠标右键.</td>
+  </tr>
+  <tr>
+    <td>MButton</td>
+    <td>鼠标中键或滚轮</td>
+  </tr>
+</table>
+<h3 id="mouse-advanced">高级按钮</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">XButton1</td>
+    <td>鼠标的第四个按键. 通常和 Browser_Back 执行相同功能.</td>
+  </tr>
+  <tr>
+    <td>XButton2</td>
+    <td>鼠标的第五个按键. 通常和 Browser_Forward 执行相同功能.</td>
+  </tr>
+</table>
+<h3 id="mouse-wheel">Wheel</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">WheelDown</td>
+    <td>向下转动鼠标滚轮(朝向您的方向).</td>
+  </tr>
+  <tr>
+    <td>WheelUp</td>
+    <td>向上转动鼠标滚轮(远离您的方向).</td>
+  </tr>
+  <tr>
+    <td>WheelLeft<br>WheelRight</td>
+    <td><p>向左或向右滚动.</p>
+    <p>这些键可以<a href="Hotkeys.htm#HWheel">用作热键</a>, 用于某些(但并非所有) 带第二个滚轮或支持左右滚动的鼠标. 在某些情况下, 必须通过鼠标的自带软件包控制这个功能. 不论鼠标如何特殊, <a href="commands/Send.htm">Send</a> 和 <a href="commands/Click.htm">Click</a> 都能在支持它们的程序里水平滚动.</p></td>
+  </tr>
+</table>
+<h2 id="keyboard">键盘</h2>
+<p class="note"><strong>注意</strong>: 字母和数字按键的名称和单个字母或数字相同. 例如: b 表示按键 <kbd>B</kbd>, 而 5 表示按键 <kbd>5</kbd>.</p>
+<p>虽然任何单个字符都可以用作键名, 但其含义(扫描码或虚拟键码) 取决于当前的键盘布局. 此外, 根据具体情况, 某些特殊字符可能需要转义或用大括号括起来. 字母 a-z 或 A-Z 可以用来指代相应的虚拟键码(通常是 vk41-vk5A), 即使它们不包含在当前的键盘布局中.</p>
+<h3 id="general">常规按键</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">CapsLock</td>
+    <td><kbd>CapsLock</kbd>(大小写锁定键)
+      <p class="warning"><strong>注意:</strong> Windows IME 可能会干扰 CapsLock 的检测和功能; 有关详情, 请参阅 <a href="#IME">CapsLock 和 IME</a>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Space</td>
+    <td><kbd>Space</kbd>(空格键)</td>
+  </tr>
+  <tr>
+    <td>Tab</td>
+    <td><kbd>Tab</kbd>(Tab 键)</td>
+  </tr>
+  <tr>
+    <td>Enter</td>
+    <td><kbd>Enter</kbd></td>
+  </tr>
+  <tr>
+    <td>Escape(或 Esc)</td>
+    <td><kbd>Esc</kbd></td>
+  </tr>
+  <tr>
+    <td>Backspace(或 BS)</td>
+    <td><kbd>Backspace</kbd></td>
+  </tr>
+</table>
+<h3 id="cursor">光标控制按键</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">ScrollLock</td>
+    <td><kbd>ScrollLock</kbd>(滚动锁定键). 当按住 <kbd>Ctrl</kbd> 键时, <kbd>ScrollLock</kbd> 键会产生 <code>CtrlBreak</code> 的键码, 但可以通过扫描码与 <kbd>Pause</kbd> 区别开来.</td>
+  </tr>
+  <tr>
+    <td>Delete(或 Del)</td>
+    <td><kbd>Delete</kbd></td>
+  </tr>
+  <tr>
+    <td>Insert(或 Ins)</td>
+    <td><kbd>Insert</kbd></td>
+  </tr>
+  <tr>
+    <td>Home</td>
+    <td><kbd>Home</kbd></td>
+  </tr>
+  <tr>
+    <td>End</td>
+    <td><kbd>End</kbd></td>
+  </tr>
+  <tr>
+    <td>PgUp</td>
+    <td><kbd>PageUp</kbd>(向上翻页键)</td>
+  </tr>
+  <tr>
+    <td>PgDn</td>
+    <td><kbd>PageDown</kbd>(向下翻页键)</td>
+  </tr>
+  <tr>
+    <td>Up</td>
+    <td><kbd>&uarr;</kbd>(上方向键)</td>
+  </tr>
+  <tr>
+    <td>Down</td>
+    <td><kbd>&darr;</kbd>(下方向键)</td>
+  </tr>
+  <tr>
+    <td>Left</td>
+    <td><kbd>&larr;</kbd>(左方向键)</td>
+  </tr>
+  <tr>
+    <td>Right</td>
+    <td><kbd>&rarr;</kbd>(右方向键)</td>
+  </tr>
+</table>
+<h3 id="numpad">Numpad 按键</h3>
+<p>由于系统行为, 根据 <kbd>NumLock</kbd> 是 ON(开) 还是 OFF(关), 以下用斜杠分隔的键识别为不同的按键. 如果 <kbd>NumLock</kbd> 为 OFF(/ON) 但 <kbd>Shift</kbd> 按下, 系统将临时释放 <kbd>Shift</kbd> 并且就像 <kbd>NumLock</kbd> 为 ON(/OFF) 状态一样.</p>
+<table class="info">
+  <tr>
+    <td style="width:12em">Numpad0 / NumpadIns</td><td><kbd>0</kbd> / <kbd>Insert</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad1 / NumpadEnd</td><td><kbd>1</kbd> / <kbd>End</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad2 / NumpadDown</td><td><kbd>2</kbd> / <kbd>&darr;</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad3 / NumpadPgDn</td><td><kbd>3</kbd> / <kbd>PageDown</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad4 / NumpadLeft</td><td><kbd>4</kbd> / <kbd>&larr;</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad5 / NumpadClear</td><td><kbd>5</kbd> / 通常什么都不做</td>
+  </tr>
+  <tr>
+    <td>Numpad6 / NumpadRight</td><td><kbd>6</kbd> / <kbd>&rarr;</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad7 / NumpadHome</td><td><kbd>7</kbd> / <kbd>Home</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad8 / NumpadUp</td><td><kbd>8</kbd> / <kbd>&uarr;</kbd></td>
+  </tr>
+  <tr>
+    <td>Numpad9 / NumpadPgUp</td><td><kbd>9</kbd> / <kbd>PageUp</kbd></td>
+  </tr>
+  <tr>
+    <td>NumpadDot / NumpadDel</td><td><kbd>.</kbd> / <kbd>Delete</kbd></td>
+  </tr>
+  <tr>
+    <td>NumLock</td>
+    <td><kbd>NumLock</kbd>(数字锁定键). 当按住 <kbd>Ctrl</kbd> 键时, <kbd>NumLock</kbd> 键会产生 <code>Pause</code> 的键码, 所以请使用 <code>^Pause</code> 来代替 <code>^NumLock</code> 作为热键.</td>
+  </tr>
+  <tr>
+    <td>NumpadDiv</td>
+    <td><kbd>/</kbd>(除号)</td>
+  </tr>
+  <tr>
+    <td>NumpadMult</td>
+    <td><kbd>*</kbd>(乘号)</td>
+  </tr>
+  <tr>
+    <td>NumpadAdd</td>
+    <td><kbd>+</kbd>(加号)</td>
+  </tr>
+  <tr>
+    <td>NumpadSub</td>
+    <td><kbd>-</kbd>(减号)</td>
+  </tr>
+  <tr>
+    <td>NumpadEnter</td>
+    <td><kbd>Enter</kbd></td>
+  </tr>
+</table>
+<h3 id="function">功能键</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">F1 - F24</td>
+    <td>在大多数键盘顶部的 12 个或更多的功能键.</td>
+  </tr>
+</table>
+<h3 id="modifier">修饰符键</h3>
+<table class="info">
+  <tr>
+    <td style="width:12em">LWin</td>
+    <td>左边的 <kbd>Win</kbd>. 对应 <code>&lt;#</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>RWin</td>
+    <td>
+      <p>右边的 <kbd>Win</kbd>. 对应 <code>&gt;#</code> 热键前缀.</p>
+      <p class="note"><strong>注意</strong>: 与 <kbd>Control</kbd>/<kbd>Alt</kbd>/<kbd>Shift</kbd> 不同, 没有一般的/中性的 &quot;Win&quot;, 因为操作系统不支持. 然而, 带有 <code>#</code> 修饰符的热键可以触发由任一 <kbd>Win</kbd> 键触发.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Control (或 Ctrl)</td>
+    <td><kbd>Control</kbd>. 作为热键(<code>Control::</code>) 时在它弹起时触发, 不过如果加上波浪号前缀可以改变这种情况. 对应 <code>^</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>LControl (或 LCtrl)</td>
+    <td>左 <kbd>Control</kbd>. 对应 <code>&lt;^</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>RControl (或 RCtrl)</td>
+    <td>右 <kbd>Control</kbd>. 对应 <code>&gt;^</code> 热键前缀.</td>
+  </tr>
+    <td>Shift</td>
+    <td><kbd>Shift</kbd>. 作为热键(<code>Shift::</code>) 时在它弹起时触发, 不过如果加上波浪号前缀可以改变这种情况. 对应 <code>+</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>LShift</td>
+    <td>左 <kbd>Shift</kbd>. 对应 <code>&lt;+</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>RShift</td>
+    <td>右 <kbd>Shift</kbd>. 对应 <code>&gt;+</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>Alt</td>
+    <td><kbd>Alt</kbd>. 作为热键(<code>Alt::</code>) 时在它弹起时触发, 不过如果加上波浪号前缀可以改变这种情况. 对应 <code>!</code> 热键前缀.</td>
+  </tr>
+  <tr>
+  <tr>
+    <td>LAlt</td>
+    <td>左 <kbd>Alt</kbd>. 对应 <code>&lt;!</code> 热键前缀.</td>
+  </tr>
+  <tr>
+    <td>RAlt</td>
+    <td>
+      <p>右 <kbd>Alt</kbd>. 对应 <code>&gt;!</code> 热键前缀.</p>
+      <p class="note"><strong>注意</strong>: 如果您的键盘布局存在 AltGr 而不是 RAlt, 那么您完全可以根据<a href="Hotkeys.htm#AltGr">这里</a>描述的那样, 通过 <code>&lt;^&gt;!</code> 把它作为热键前缀使用. 此外, <code>LControl &amp; RAlt::</code> 可以把 AltGr 自身设置成热键.</p>
+    </td>
+  </tr>
+</table>
+<h3 id="multimedia">多媒体键</h3>
+<p>下面列出的每个按键的功能可以通过修改 Windows 注册表进行替换. 这个表格中显示的是在 Windows 系统的大多数版本中每个按键的默认功能.</p>
+<table class="info">
+  <tr>
+    <td style="width:13em">Browser_Back</td>
+    <td>后退</td>
+  </tr>
+  <tr>
+    <td>Browser_Forward</td>
+    <td>前进</td>
+  </tr>
+  <tr>
+    <td>Browser_Refresh</td>
+    <td>刷新</td>
+  </tr>
+  <tr>
+    <td>Browser_Stop</td>
+    <td>停止</td>
+  </tr>
+  <tr>
+    <td>Browser_Search</td>
+    <td>搜索</td>
+  </tr>
+  <tr>
+    <td>Browser_Favorites</td>
+    <td>收藏夹</td>
+  </tr>
+  <tr>
+    <td>Browser_Home</td>
+    <td>主页</td>
+  </tr>
+  <tr>
+    <td>Volume_Mute</td>
+    <td>静音</td>
+  </tr>
+  <tr>
+    <td>Volume_Down</td>
+    <td>调低音量</td>
+  </tr>
+  <tr>
+    <td>Volume_Up</td>
+    <td>增加音量</td>
+  </tr>
+  <tr>
+    <td>Media_Next</td>
+    <td>下一首</td>
+  </tr>
+  <tr>
+    <td>Media_Prev</td>
+    <td>上一首</td>
+  </tr>
+  <tr>
+    <td>Media_Stop</td>
+    <td>停止</td>
+  </tr>
+  <tr>
+    <td>Media_Play_Pause</td>
+    <td>播放/暂停</td>
+  </tr>
+  <tr>
+    <td>Launch_Mail</td>
+    <td>打开默认的电子邮件程序</td>
+  </tr>
+  <tr>
+    <td>Launch_Media</td>
+    <td>打开默认的媒体播放器</td>
+  </tr>
+  <tr>
+    <td>Launch_App1</td>
+    <td>打开我的电脑</td>
+  </tr>
+  <tr>
+    <td>Launch_App2</td>
+    <td>打开计算器</td>
+  </tr>
+ </table>
+<h3 id="other">其他按键</h3>
+<table class="info">
+  <tr>
+    <td style="width:13em">AppsKey</td>
+    <td><kbd>Menu</kbd>. 这是调用右键上下文菜单的按键.</td>
+  </tr>
+  <tr>
+    <td>PrintScreen</td>
+    <td><kbd>PrintScreen</kbd>(截屏键)</td>
+  </tr>
+  <tr>
+    <td>CtrlBreak</td>
+    <td><kbd>Ctrl</kbd>+<kbd>Pause</kbd> 或 <kbd>Ctrl</kbd>+<kbd>ScrollLock</kbd></td>
+  </tr>
+  <tr>
+    <td>Pause</td>
+    <td><kbd>Pause</kbd>(暂停键) 或 <kbd>Ctrl</kbd>+<kbd>NumLock</kbd>. 当按住 <kbd>Ctrl</kbd> 键时, <kbd>Pause</kbd> 会产生 <code>CtrlBreak</code> 的键码, 而 <kbd>NumLock</kbd> 产生 <code>Pause</code>, 所以请使用 <code>^CtrlBreak</code> 代替 <code>^Pause</code> 来作为热键.</td>
+  </tr>
+  <tr>
+    <td>帮助</td>
+    <td><kbd>Help</kbd>(帮助键). 此键可能在大多数键盘上不存在. 它通常和 <kbd>F1</kbd> 不同.</td>
+  </tr>
+  <tr>
+    <td>Sleep</td>
+    <td><kbd>Sleep</kbd>(休眠键). 注意在一些键盘上的 sleep 键可能不是休眠功能.</td>
+  </tr>
+  <tr id="sc">
+    <td>SC<b>nnn</b></td>
+    <td>请在 <b>nnn</b> 中指定按键的扫描码. 识别上面没有提到的罕见的按键. 请参阅<a href="#SpecialKeys">特殊按键</a>了解详情.</td>
+  </tr>
+  <tr id="vk">
+    <td>VK<b>nn</b></td>
+    <td><p>请在 <b>nn</b> 中指定十六进制的虚拟按键码. 这种极少用的方法还可以避免某些类型的<a href="Hotkeys.htm">热键</a>需要安装<a href="commands/_InstallKeybdHook.htm">键盘钩子</a>. 例如, 后面的热键不使用键盘钩子, 但副作用是它会在按下 <kbd>Home</kbd> 或 NumpadHome 的<em>其中一个</em>时触发:</p>
+      <pre>^VK24::MsgBox "You pressed Home or NumpadHome while holding down Control."
+</pre>
+      <p><strong>已知限制</strong>: 强制使用<a href="commands/_InstallKeybdHook.htm">键盘钩子</a>的 VK 热键, 例如 <code>*VK24</code> 或 <code>~VK24</code>, 只会触发其中一个热键, 而不会触发两者(例如触发 NumpadHome 但不触发 <kbd>Home</kbd>).
+      关于 VKnn 方法的更多信息, 请参阅<a href="#SpecialKeys">特殊按键</a>.</p>
+      <p class="warning"><strong>警告:</strong> 只有 <a href="commands/Send.htm">Send</a>, <a href="commands/GetKeyName.htm">GetKeyName</a>, <a href="commands/GetKeyVK.htm">GetKeyVK</a>, <a href="commands/GetKeySC.htm">GetKeySC</a> and <a href="commands/_MenuMaskKey.htm">#MenuMaskKey</a> 支持 VKnn 和 SCnnn 组合使用. 如果在任何其他情况下组合使用(或存在任何其他无效后缀), 则不能识别按键. 例如, <code>vk1Bsc001::</code> 引发一个错误.</p>
+      </td>
+  </tr>
+</table>
+<h2 id="Joystick">Joystick</h2>
+<p><strong>Joy1 到 Joy32</strong>: 操纵杆的按钮. 要辅助判断您操纵杆的按钮编号, 请使用此<a href="scripts/index.htm#JoystickTest">测试脚本</a>. 请注意这里不支持<a href="Hotkeys.htm">热键前缀符</a>, 例如 ^(control) 和 +(shift) (尽管可以使用 <a href="commands/GetKeyState.htm">GetKeyState</a> 作为替代方法). 还必须注意, 如果活动窗口设计对操纵杆按钮进行检测, 那么操纵杆按钮按下时总是会 "传递" 给它.</p>
+<p>尽管下列操纵杆控制器的名称不能设为热键, 但它们可以用于 <a href="commands/GetKeyState.htm">GetKeyState</a>:<br>
+  <strong>JoyX, JoyY 和 JoyZ</strong>: 操纵杆的 X(水平), Y(垂直) 和 Z(高度/深度) 轴.<br>
+  <strong>JoyR</strong>: 操纵杆的方向舵或第 4 轴.<br>
+  <strong>JoyU 和 JoyV</strong>: 操纵杆的第 5 和第 6 轴.<br>
+  <strong>JoyPOV</strong>: 视点(帽) 控制器.<br>
+  <strong>JoyName</strong>: 操纵杆或其驱动的名称.<br>
+  <strong>JoyButtons</strong>: 操纵杆支持的按钮数(不总是准确的).<br>
+  <strong>JoyAxes</strong>: 操纵杆支持的轴数.<br>
+  <strong>JoyInfo</strong>: 提供由零个或多个后面的字母组成的字符串, 这些字母表示操纵杆的功能: <strong>Z</strong>(有 Z 轴), <strong>R</strong>(有 R 轴), <strong>U</strong>(有 U 轴), <strong>V</strong>(有 V 轴), <strong>P</strong>(有 POV 控制器), <strong>D</strong>(POV 控制器有少数离散的/不同的设置), <strong>C</strong>(POV 控制器是连续的/良好的). 示例字符串: ZRUVPD</p>
+<p><strong>多个操纵杆</strong>: 如果计算机上有多个操纵杆并且您想使用第一个外的其他操纵杆, 那么请在控制器名称的前面加上操纵杆的编号(最大为 16). 例如, 2joy1 表示第二个操纵杆的首个按钮.</p>
+<p class="note"><strong>注意</strong>: 如果您在使用脚本识别您的操纵杆时遇到问题, 曾有人报告说尽管只有一个操纵杆却需要指定大于 1 的操纵杆编号. 不清楚这种方法是如何得到的或是否正常, 不过请尝试在<a href="scripts/index.htm#JoystickTest">操纵杆测试脚本</a>中使用操纵杆编号也许可以帮助确定这种方法是否适合您的系统.</p>
+<p><strong>另见</strong>:<br>
+<a href="misc/RemapJoystick.htm">操纵杆重映射:</a> 使用操纵杆发送键击和鼠标点击的方法.<br>
+<a href="scripts/index.htm#JoystickTest">操纵杆到鼠标的映射脚本</a>: 把操纵杆作为鼠标使用.</p>
+<h2 id="remote">手持遥控</h2>
+<p>通过 <a href="scripts/index.htm#WinLIRC">WinLIRC 客户端脚本</a>响应手持遥控器的信号.</p>
+<h2 id="SpecialKeys">特殊按键</h2>
+<p>如果您的键盘或鼠标含有前面没有列出的按键, 那么使用下列步骤后您仍可能把它设为热键.</p>
+<ol>
+  <li>确保至少有一个使用<a href="commands/_InstallKeybdHook.htm">键盘钩子</a>的脚本正在运行. 打开脚本的主窗口并在菜单栏中选择 "View-&gt;<a href="commands/KeyHistory.htm">Key history</a>" 后您可以判断脚本是否使用了键盘钩子.</li>
+  <li>双击脚本的托盘图标来打开其主窗口.</li>
+  <li>按下您键盘上的其中一个 "神秘按键".</li>
+  <li>选择菜单项 "View-&gt;<a href="commands/KeyHistory.htm">Key history</a>"</li>
+  <li>向下滚动到页面的底部. 在底部附近的某个地方可以看到您按键的按下和弹起事件. 注: 一些按键不生成事件, 因此这里看不到它们的事件. 如果是这种情况, 那么您不能直接把此特殊按键设为热键, 因为您的键盘驱动或硬件在很低的的层面处理它, AutoHotkey 无法访问. 有关可能的解决方案, 请参阅下文.</li>
+  <li>如果检测到了您的按键, 请记下列表中第二列的 3 位十六进制值(例如 <strong>159</strong>).</li>
+  <li>要把此键定义为热键, 请参照此例:
+<pre>
+<strong>SC159::</strong>MsgBox ThisHotkey " was pressed." <em>; 替换 159 为您的按键的值.</em>
+</pre>另请参阅 <a href="Hotkeys.htm#HotBraces">ThisHotkey</a>.</li>
+</ol>
+<p><strong>反向</strong>: 要把其他键重映射 <em>为</em> "神秘按键", 请参照此例:</p>
+<pre><em>; 把 159 替换为上面找到的值. 把 FF(如果需要) 替换为
+; 按键的虚拟键, 它可以在按键历史屏幕的首列找到.</em>
+#c::Send "{vkFFsc159}" <em>; 有关详情, 请参阅 <a href="commands/Send.htm#vk">Send {vkXXscYYY}</a>.</em></pre>
+<p><strong>可供选择的解决方案</strong>: 如果您的按键或鼠标按钮没有在<a href="commands/KeyHistory.htm">按键历史</a>页面检测到, 那么下面的其中一种方法可能有帮助:</p>
+<ol>
+  <li>
+    <p>重新配置您鼠标或键盘的附带软件(有时可以在控制面板或开始菜单中访问) 来让 "神秘按键" 发送其他的键击. 然后可以在脚本中把这样的键击设置为热键. 例如, 如果您配置神秘按键来发送 <kbd>Control</kbd>+<kbd>F1</kbd>, 然后在脚本中通过使用 <code>^F1::</code> 您可以把这个按键间接的设置为热键.</p>
+  </li>
+  <li>
+    <p>试试 <a href="https://www.autohotkey.com/board/topic/38015-ahkhid-an-ahk-implementation-of-the-hid-functions/">AHKHID</a>. 你还可以尝试以 <code>RawInput*</code>, <code>USB HID</code> 或 <code>AHKHID</code> 作为关键字在<a href="https://www.autohotkey.com/boards/">论坛</a>进行搜索.</p>
+  </li>
+  <li>
+    <p>下面是最后的手段, 通常应该在其他所有方法都无效时才去尝试. 这是由于成功的机会很小且可能会引起难以取消的不必要的副作用:<br>
+	禁用或移除您键盘或鼠标的附带软件, 或者让它使用更标准的驱动, 例如操作系统内置的那个. 这里假设您特殊的键盘或鼠标使用自己的驱动并且您不使用其自带驱动和软件提供的功能.</p>
+  </li>
+</ol>
+
+<h2 id="IME">CapsLock 和 IME</h2>
+<p>Windows IME 的某些配置(如 日文输入与英文键盘) 使用 CapsLock 来切换模式. 在这种情况下, CapsLock 被 IME 压制, 并且无法被 AutoHotkey 检测到. 不过 <kbd>Alt</kbd>+<kbd>CapsLock</kbd>, <kbd>Ctrl</kbd>+<kbd>CapsLock</kbd> 和 <kbd>Shift</kbd>+<kbd>CapsLock</kbd> 等快捷键可以通过变通的方法禁用. 具体来说, 发送松开按键来修改 IME 的状态, 但通过给键盘钩子发送信号来抑制该事件, 从而防止任何其他影响. 可以使用以下函数来实现这一目的:</p>
+<pre filename="SendSuppressedKeyUp.ahk">
+<em>; 必须安装键盘钩子.</em>
+#InstallKeybdHook
+SendSuppressedKeyUp(key) {
+    DllCall("keybd_event"
+        , "char", GetKeyVK(key)
+        , "char", GetKeySC(key)
+        , "uint", KEYEVENTF_KEYUP := 0x2
+        , "uptr", KEY_BLOCK_THIS := 0xFFC3D450)
+}
+</pre>
+<p>将函数复制到脚本中或保存为 <em>SendSuppressedKeyUp.ahk</em> 放入<a href="Functions.htm#lib">函数库</a>, 可以按照以下方式使用该函数:</p>
+<pre>
+<em>; 禁止 IME 的 Alt+key 快捷键.</em>
+~LAlt::SendSuppressedKeyUp("LAlt")
+
+<em>; 测试热键:</em>
+!CapsLock::MsgBox % A_ThisHotkey
+
+<em>; 重映射 CapsLock 为 LCtrl 以与 IME 兼容的方式.</em>
+*CapsLock::
+    Send {Blind}{LCtrl DownR}
+    SendSuppressedKeyUp("LCtrl")
+    return
+*CapsLock up::
+    Send {Blind}{LCtrl Up}
+    return
+</pre>
+
+</body>
+</html>

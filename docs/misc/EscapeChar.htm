@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>转义序列 - 定义 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="Escape sequences are used to indicate that specific characters should be interpreted differently than they normally would." />
+<meta name="ahk:equiv-v1" content="commands/_EscapeChar.htm" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>转义序列</h1>
+
+<p>转义字符 `(反单引号或重音符) 用来表明在紧跟其后的字符不能像平常那样进行解释. 该字符位于大多数英式键盘的左上角. 使用这个字符而不是反斜杠, 以避免在文件路径中需要两个反斜杠.</p>
+
+<table class="info">
+  <tr>
+    <th style="width:15%">输入这些字符</th>
+    <th>得到这些字符</th>
+  </tr>
+  <tr>
+    <td>``</td>
+    <td>` (原义的重音符; 也就是说, 两个连续的转义字符会产生一个单独的原义字符)</td>
+  </tr>
+  <tr>
+    <td>`;</td>
+    <td>&nbsp;;(原义的分号). <strong>注意:</strong> 这 <u>仅在</u> 分号左边有空格或制表符的情况下是必要的. 如果没有, 它将被正确识别而不会被转义.</td>
+  </tr>
+  <tr>
+    <td>`:</td>
+    <td>:(原义的冒号). 这仅在热字串触发缩写中是必要的.</td>
+  </tr>
+  <tr>
+    <td>`{</td>
+    <td><kbd>{</kbd>(键盘按键). <a href="Remap.htm#EscapeBrace">重映射</a>按键到 <kbd>{</kbd> 时才有效, 并且是必需的.</td>
+  </tr>
+  <tr>
+    <td>`n</td>
+    <td>新行(换行/LF)</td>
+  </tr>
+  <tr>
+    <td>`r</td>
+    <td>回车(CR)</td>
+  </tr>
+  <tr>
+    <td>`b</td>
+    <td>退格</td>
+  </tr>
+  <tr>
+    <td>`t</td>
+    <td>tab(制表符, 很典型的水平移位)</td>
+  </tr>
+  <tr>
+    <td>`s</td>
+    <td>空格</td>
+  </tr>
+  <tr>
+    <td>`v</td>
+    <td>垂直 tab -- 对应的 Ascii 值为 11. 在一些应用程序中可以通过键入 <kbd>Control</kbd>+<kbd>K</kbd> 让它显示出来.</td>
+  </tr>
+  <tr>
+    <td>`a</td>
+    <td>警告(铃) -- 对应的 Ascii 值为 7. 在一些应用程序中可以通过键入 <kbd>Control</kbd>+<kbd>G</kbd> 让它显示出来.</td>
+  </tr>
+  <tr>
+    <td>`f</td>
+    <td>进纸 -- 对应的 Ascii 值为 12. 在一些应用程序中可以通过键入 <kbd>Control</kbd>+<kbd>L</kbd> 让它显示出来.</td>
+  </tr>
+  <tr>
+    <td>Send</td>
+    <td>在默认(非文本(Raw)) 模式下, 使用 <a href="../commands/Send.htm">Send 函数</a>或<a href="../Hotstrings.htm">热字串</a>时, 这些字符(如, {}^!+#) 具有特殊含义. 因此, 要使用它们的原义字符, 必须用大括号将它们括起来. 例如: <code>Send "{<strong>^</strong>}{<strong>!</strong>}{<strong>{</strong>}"</code>.</td>
+  </tr>
+  <tr id="quote">
+    <td>`&quot; 或 `&apos;</td>
+    <td>单引号(') 和双引号(") 所拥有的功能相同, 只是单引号中包含的字符串可以包含原义双引号, 反之亦然. 因此, 要在原义字符串中包含实际的引号, 请转义引号或将字符串用相反类型的引号括起来. 例如: <code>Var := "The color `"red`" was found."</code> 或 <code>Var := 'The color "red" was found.'</code>.</td>
+  </tr>
+</table>
+
+<h2>示例</h2>
+<div class="ex" id="ExBasic">
+<p><a href="#ExBasic">#1</a></p>
+<pre>MsgBox "Line 1<strong>`n</strong>Line 2"</pre>
+</div>
+
+</body>
+</html>

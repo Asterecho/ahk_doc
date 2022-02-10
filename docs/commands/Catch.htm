@@ -1,0 +1,59 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>Catch - 语法 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="The Catch statement specifies the code to execute if an exception is raised during execution of a Try statement." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>Catch</h1>
+
+<p>指定在 <a href="Try.htm">try</a> 语句执行期间发生异常时要执行的代码.</p>
+
+<pre class="Syntax" style="line-height: 120%"><span class="func">Catch</span> <span class="optional">OutputVar</span>
+    <i>Statement</i></pre>
+<pre class="Syntax" style="line-height: 100%"><span class="func">Catch</span> <span class="optional">OutputVar</span>
+{
+    <i>语句</i>
+}</pre>
+<h2 id="Parameters">参数</h2>
+<dl>
+
+  <dt>OutputVar</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#variables">变量</a></p>
+    <p><em>(可选)</em> 存储抛出值或异常对象的变量. 这不能是一个<a href="../Language.htm#dynamic-variables">动态变量</a>.</p>
+  </dd>
+
+  <dt><i>Statement(s)</i></dt>
+  <dd><p>发生异常时执行的函数或表达式.</p></dd>
+
+</dl>
+
+<h2 id="Remarks">备注</h2>
+<p><em>OutputVar</em> 可以选择括在括号中, 在这种情况下, <code>Catch</code> 后的空格或制表符是可选的.</p>
+<p><em>catch</em> 的每次使用都必须附属于(与之关联) 它上面的 <a href="Try.htm">try</a> 语句. <em>catch</em> 总是附属于它上面最近的未被认领的 <em>try</em> 语句, 除非使用<a href="Block.htm">区块</a>来改变这种行为.</p>
+<p>可选使用 <a href="Block.htm#otb">One True Brace(OTB) 样式</a>. 例如:</p>
+<pre>try {
+    ...
+} catch e {
+    ...
+}</pre>
+
+<h2 id="RuntimeErrors">运行时错误</h2>
+<p><em>try-catch</em> 语句也可以用来处理脚本计算期间或由内置函数引发的运行时错误. 如果运行时错误或异常没有被处理, 将显示一条错误消息, 当前线程退出. 加载时错误无法处理, 因为它们发生在执行 <em>try</em> 语句之前.</p>
+<p>存储在 <em>OutputVar</em>(如果存在) 中的值是一个<a href="Throw.htm#Exception">异常对象</a>.</p>
+
+<h2 id="Related">相关</h2>
+<p><a href="Try.htm">Try</a>, <a href="Throw.htm">Throw</a>, <a href="Finally.htm">Finally</a>, <a href="Block.htm">Blocks</a>, <a href="OnError.htm">OnError</a></p>
+
+<h2 id="Examples">示例</h2>
+<p>请参阅 <a href="Try.htm#Examples">Try</a>.</p>
+
+</body>
+</html>

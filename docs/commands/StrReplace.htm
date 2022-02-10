@@ -1,0 +1,95 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<title>StrReplace - 语法 &amp; 使用 | AutoHotkey v2</title>
+<meta name="description" content="The StrReplace function replaces the specified substring with a new string." />
+<meta name="ahk:equiv-v1" content="commands/StringReplace.htm" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="../static/theme.css" rel="stylesheet" type="text/css" />
+<script src="../static/content.js" type="text/javascript"></script>
+<script type="text/javascript">$(function(){0<=window.navigator.userAgent.toLowerCase().indexOf("ucbrowser")&&CaoNiMaDeUc()})</script>
+</head>
+<body>
+
+<h1>StrReplace</h1>
+
+<p>用新字符串替换指定的子字符串.</p>
+
+<pre class="Syntax">NewStr := <span class="func">StrReplace</span>(Haystack, SearchText <span class="optional">, ReplaceText, CaseSense, OutputVarCount, Limit := -1</span>)</pre>
+<h2 id="Parameters">参数</h2>
+<dl>
+
+  <dt>Haystack</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#strings">字符串</a></p>
+    <p>内容被搜索和替换的字符串.</p>
+  </dd>
+
+  <dt>SearchText</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#strings">字符串</a></p>
+    <p>要搜索的字符串.</p>
+  </dd>
+
+  <dt>ReplaceText</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#strings">字符串</a></p>
+    <p>替换 <em>SearchText</em> 的文本. 如果省略或为空, 那么 <em>SearchText</em> 会被替换为空. 换句话说, 它将在返回值中被省略.</p>
+  </dd>
+
+  <dt>CaseSense</dt>
+  <dd>
+    <p>Type: <a href="../Concepts.htm#numbers">Integer</a> or <a href="../Concepts.htm#strings">String</a></p>
+    <p>One of the following values (defaults to 0 if omitted):</p>
+    <p><code>"On"</code> or <code>1</code> (<code>True</code>): The search is case sensitive.</p>
+    <p><code>"Off"</code> or <code>0</code> (<code>False</code>): The letters A-Z are considered identical to their lowercase counterparts.</p>
+    <p><code>"Locale"</code>: The search is case insensitive according to the rules of the current user's locale. For example, most English and Western European locales treat not only the letters A-Z as identical to their lowercase counterparts, but also non-ASCII letters like &Auml; and &Uuml; as identical to theirs. <em>Locale</em> is 1 to 8 times slower than <em>Off</em> depending on the nature of the strings being compared.</p>
+  </dd>
+
+  <dt>OutputVarCount</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#variables">变量</a></p>
+    <p>未加引号的变量名称, 其中储存了要进行替换的数量(没有则为 0).</p>
+  </dd>
+
+  <dt>Limit</dt>
+  <dd>
+    <p>类型: <a href="../Concepts.htm#numbers">整数</a></p>
+    <p>如果省略 <em>Limit</em>, 则默认为 -1, 它将替换 <em>Haystack</em> 中找到的 <strong>所有</strong> 模式. 否则, 请指定允许的最大替换数量. <em>Haystack</em> 最后一个替换对象右边的内容将保持不变.</p>
+  </dd>
+
+</dl>
+
+<h2 id="Return_Value">返回值</h2>
+<p>类型: <a href="../Concepts.htm#strings">字符串</a></p>
+<p>此函数返回指定字符串的替换版本.</p>
+
+<h2 id="Remarks">备注</h2>
+<p>内置变量 <a href="../Variables.htm">A_Space</a> 和 <a href="../Variables.htm">A_Tab</a> 分别包含了单个空格和单个制表符. 当在 <em>SearchText</em> 的开头或结尾或单独搜索空格和制表符时, 这很有用.</p>
+
+<h2 id="Related">相关</h2>
+<p><a href="RegExReplace.htm">RegExReplace</a>, <a href="InStr.htm">InStr</a>, <a href="SubStr.htm">SubStr</a>, <a href="StrLen.htm">StrLen</a>, <a href="StrLower.htm">StrLower</a>, <a href="StrLower.htm">StrUpper</a></p>
+
+<h2 id="Examples">示例</h2>
+<div class="ex" id="ExBasic">
+<p><a href="#ExBasic">#1</a></p>
+<pre><em>; 移除剪贴板中所有的 CR+LF:</em>
+A_Clipboard := StrReplace(A_Clipboard, "`r`n")
+
+<em>; 用加号替换所有空格:</em>
+NewStr := StrReplace(OldStr, A_Space, "+")</pre>
+</div>
+
+<div class="ex" id="ExBlank">
+<p><a href="#ExBlank">#2</a>: 移除变量中所有空行:</p>
+<pre>Loop
+{
+    MyString := StrReplace(MyString, "`r`n`r`n", "`r`n", ReplaceCount)
+    if ReplaceCount = 0  <em>; 不需要再进行替换.</em>
+        break
+}</pre>
+</div>
+
+</body>
+</html>
